@@ -601,6 +601,7 @@ progress {
   content: "— ";
 }
 
+
 .img-fluid {
   max-width: 100%;
   height: auto;
@@ -637,7 +638,7 @@ progress {
 .container-md,
 .container-sm {
   --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
+  --bs-gutter-y: 1.5rem;
   width: 100%;
   padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
@@ -11068,8 +11069,14 @@ body {
   width: 100%;
   height: auto;
   min-height: 35rem;
-  padding: 15rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000 100%), url("../assets/img/ruins.jpg");
+  padding: 5rem 0 ;
+  /* background: linear-gradient(to bottom,rgba(0, 0, 0, 0) 0%, rgba(37, 9, 2, 1) 75%, rgba(37, 9, 2, 1) 100%), url("../assets/img/ruins.jpg"); */
+  background: linear-gradient(to bottom, 
+  rgba(0, 0, 0, 0) 0%, 
+  rgba(64, 21, 7, 0.4) 20%,
+  rgba(37, 9, 2, 0.4) 60%,
+  rgba(20, 5, 2, 1) 100%),
+  url("../assets/img/ruins.jpg") center/cover fixed;;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -11080,14 +11087,19 @@ body {
   font-size: 2.5rem;
   line-height: 2.5rem;
   letter-spacing: 0.8rem;
-  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+  z-index: 1;
+  background: linear-gradient(rgba(255, 255, 255, 1),rgba(255, 255, 255, 1),rgba(255, 255, 255, 1));
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
           background-clip: text;
 }
 .masthead h2, .masthead .h2 {
   max-width: 20rem;
-  font-size: 1rem;
+  font-size: 3rem;
+}
+.masthead h3, .masthead .h3 {
+  max-width: 50rem;
+  font-size: 1.5rem;
 }
 @media (min-width: 768px) {
   .masthead h1, .masthead .h1 {
@@ -11107,28 +11119,170 @@ body {
   }
   .masthead h2, .masthead .h2 {
     max-width: 30rem;
-    font-size: 1.25rem;
+    font-size: 2rem;
   }
+  /* .masthead::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(37, 9, 2, 1) 0%, rgba(255, 255, 255, 0) 30%);
+    z-index: 0;
+  } */
+}
+
+.row {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid #ccc; */
+}
+
+.tag {
+  opacity: 0;
+  transform: translate(0, 10vh);
+  transition: all 1s;
+}
+
+.tag.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.fade {
+  opacity: 0;
+  transform: translate(0, 10vh);
+  transition: all 1s;
+}
+
+
+.first-fade-in {
+  animation: fadeIn 5s forwards; /* Keep the final state */
+  -webkit-animation: fadeIn 5s forwards;
+  -moz-animation: fadeIn 5s forwards;
+  -o-animation: fadeIn 5s forwards;
+  -ms-animation: fadeIn 5s forwards;
+}
+
+/* Animation for the second text element with a 2s delay */
+.second-fade-in {
+  animation: fadeIn 5s 0.2s forwards; /* Start the animation after 2s and keep the final state */
+  -webkit-animation: fadeIn 5s 0.2s forwards;
+  -moz-animation: fadeIn 5s 0.2s forwards;
+  -o-animation: fadeIn 5s 0.2s forwards;
+  -ms-animation: fadeIn 5s 0.2s forwards;
+}
+
+.third-fade-in {
+  animation: fadeIn 5s 1s forwards; /* Start the animation after 2s and keep the final state */
+  -webkit-animation: fadeIn 5s 1s forwards;
+  -moz-animation: fadeIn 5s 1s forwards;
+  -o-animation: fadeIn 5s 1s forwards;
+  -ms-animation: fadeIn 5s 1s forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1.2s ease-out;
+}
+
+.scroll-reveal-Visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.zoom {
+  /* padding: 50px; */
+  /* background-color: green; */
+  transition: transform .2s; /* Animation */
+  /* width: 200px;
+  height: 200px; */
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.5);
 }
 
 .about-section {
-  padding-top: 10rem;
-  background: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
+  padding: 10rem 0; /* Adjust padding as needed */
+  margin: 0; /* Remove margin */
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 5, 2, 1) 0%,
+    rgba(20, 5, 2, 0.7) 60%, /* Adjust the alpha value to control blending */
+    rgba(37, 9, 2, 0.4) 100%
+  );
 }
+
 .about-section p {
   margin-bottom: 5rem;
 }
 
-.projects-section {
-  padding: 10rem 0;
+.line-1{
+  position: relative;
+  top: 50%;  
+  width: 17.7em;
+  margin: 0 auto;
+  border-right: 2px solid rgba(255,255,255,.75);
+  font-size: 180%;
+  font-family: serif;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);    
+  opacity: 0;
 }
+
+/* Add styles for the "visible" class */
+.line-1.visible {
+  opacity: 1;
+  animation: typewriter 4s steps(44) 1s 1 normal both, blinkTextCursor 500ms steps(44) infinite normal;
+}
+
+/* Animation */
+.anim-typewriter{
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: none; /* Remove the initial animation */
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 17.7em;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
+
+.projects-section {
+  padding: 10rem 0; /* Adjust padding as needed */
+  margin: 0; /* Remove margin */
+  background: linear-gradient(
+    to bottom,
+    rgba(37, 9, 2, 0.4) 100%,
+    rgba(37, 9, 2, 0.4) 100%
+  );
+}
+
 .projects-section .featured-text {
   padding: 2rem;
 }
+
 @media (min-width: 992px) {
   .projects-section .featured-text {
     padding: 0 0 0 2rem;
-    border-left: 0.5rem solid #64a19d;
+    border-left: 0.5rem solid #FFFFFF;
   }
 }
 .projects-section .project-text {
@@ -11143,7 +11297,9 @@ body {
 
 .signup-section {
   padding: 10rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000 100%), url("../assets/img/bg-signup.jpg");
+  background: linear-gradient(to bottom, 
+  rgba(37, 9, 2, 0.4) 0%, 
+  rgba(37, 9, 2, 0.4) 100%), url("../assets/img/bg-signup.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
