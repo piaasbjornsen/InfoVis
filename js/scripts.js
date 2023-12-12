@@ -14,16 +14,20 @@ $(document).on("scroll", function() {
     var tags = $(".tag");
   
     for (var i = 0; i < tags.length; i++) {
-      var tag = tags[i];
-      var tagBottom = $(tag).position().top + $(tag).outerHeight(); // Calculate the bottom of the element
+        var tag = tags[i];
+        var tagTop = $(tag).position().top;
+        var tagBottom = tagTop + $(tag).outerHeight();
   
-      if (tagBottom > pageTop && tagBottom < pageBottom) {
-        $(tag).addClass("visible");
-      } else {
-        $(tag).removeClass("visible");
-      }
+        if (tagTop >= pageTop && tagBottom <= pageBottom) {
+            $(tag).addClass("visible");
+        } else {
+            $(tag).removeClass("visible");
+        }
     }
-  });
+});
+
+
+
   
 // Reload handler
   window.onload = function() {

@@ -11177,11 +11177,11 @@ body {
 }
 
 .third-fade-in {
-  animation: fadeIn 5s 1s forwards; /* Start the animation after 2s and keep the final state */
-  -webkit-animation: fadeIn 5s 1s forwards;
-  -moz-animation: fadeIn 5s 1s forwards;
-  -o-animation: fadeIn 5s 1s forwards;
-  -ms-animation: fadeIn 5s 1s forwards;
+  animation: fadeIn 5s 2s forwards; /* Start the animation after 2s and keep the final state */
+  -webkit-animation: fadeIn 5s 2s forwards;
+  -moz-animation: fadeIn 5s 2s forwards;
+  -o-animation: fadeIn 5s 2s forwards;
+  -ms-animation: fadeIn 5s 2s forwards;
 }
 
 @keyframes fadeIn {
@@ -11214,19 +11214,27 @@ body {
 }
 
 .about-section {
-  padding: 10rem 0; /* Adjust padding as needed */
+  padding: 7rem 0; /* Adjust padding as needed */
   margin: 0; /* Remove margin */
-  background: linear-gradient(
+  /* background: linear-gradient(
     to bottom,
     rgba(20, 5, 2, 1) 0%,
-    rgba(20, 5, 2, 0.7) 60%, /* Adjust the alpha value to control blending */
+    rgba(20, 5, 2, 0.7) 60%, 
     rgba(37, 9, 2, 0.4) 100%
-  );
+  ); */
+  background-color:rgba(20, 5, 2, 0.7) ;
 }
 
 .about-section p {
   margin-bottom: 5rem;
 }
+
+.main-text {
+  text-align: center;
+  font-family: serif;
+  font-size: 200%;
+}
+
 
 .line-1{
   position: relative;
@@ -11234,7 +11242,7 @@ body {
   width: 17.7em;
   margin: 0 auto;
   border-right: 2px solid rgba(255,255,255,.75);
-  font-size: 180%;
+  font-size: 300%;
   font-family: serif;
   text-align: center;
   white-space: nowrap;
