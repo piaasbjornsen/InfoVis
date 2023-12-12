@@ -48,6 +48,7 @@ var Tooltip = d3.select("#my_dataviz")
     .style("border-width", "2px")
     .style("border-radius", "5px")
     .style("padding", "5px")
+    .style("position", "absolute")
 
     // Three function that change the tooltip when user hover / move / leave a cell
     var mouseover = function(d) {
@@ -56,7 +57,7 @@ var Tooltip = d3.select("#my_dataviz")
     }
     var mousemove = function(d) {
     Tooltip
-        .html("Number of deaths: " + d.Deaths)
+        .html("Number of deaths: " + d.Deaths_m)
         .style("left", (d3.mouse(this)[0]+70) + "px")
         .style("top", (d3.mouse(this)[1]) + "px")
     }
@@ -74,7 +75,11 @@ svg.selectAll("mybar")
     .attr("class", "myCircle")
     .attr("x", function(d) { return x(d.Diseases); })
     .attr("width", x.bandwidth())
-    .attr("fill", "#69b3a2")
+    // .attr("fill", "#69b3a2")
+    .style("fill", function(d) {
+      if (d.Diseases == " Conflict and terrorism ") {return "red"}
+      else 	{ return "black" }
+  ;})
     .on("mouseover", mouseover)
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave)
