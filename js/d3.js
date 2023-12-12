@@ -6,7 +6,7 @@ var margin = {top: 10, right: 30, bottom: 20, left: 60},
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var svg = d3.select("#graph")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -44,14 +44,14 @@ d3.csv("number_terrorist_attacks_casualties_per_year.csv",
     svg.append("path")
       .datum(data)
       .attr("fill", "none")
-      .attr("stroke", "steelblue")
+      .attr("stroke", "grey")
       .attr("stroke-width", 1.5)
       .attr("d", d3.line()
         .x(function(d) { return x(d.date) })
         .y(function(d) { return y(d.value) })
         )
   
-      var Tooltip = d3.select("#my_dataviz")
+      var Tooltip = d3.select("#graph")
       .append("div")
       .style("opacity", 0)
       .attr("class", "tooltip")
@@ -61,17 +61,19 @@ d3.csv("number_terrorist_attacks_casualties_per_year.csv",
       .style("border-radius", "9px")
       .style("padding", "10px")
       .style("position", "absolute")
+      // .style("pointer-events", "none")
 
       // Three function that change the tooltip when user hover / move / leave a cell
       var mouseover = function(d) {
         Tooltip
           .style("opacity", 1)
+          .html("Year : "+ d.date.getFullYear() + "<br/>" +" Casualties : "+d.value)
       }
       var mousemove = function(d) {
         Tooltip
           .style("left", (d3.mouse(this)[0]+70) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
-          .html("Year : "+ d.date.getFullYear() +" Casualties : "+d.value)
+          .html("Year : "+ d.date.getFullYear() + "<br/>" +" Casualties : "+d.value)
       }
       var mouseleave = function(d) {
         Tooltip

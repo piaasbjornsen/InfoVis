@@ -11219,10 +11219,7 @@ h1 {
   background-color: #FFFFFF;
   border: 1px solid #4D8DC4;
   box-shadow: 1px 1px 15px #000000;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
 }
 
 div.tooltip {   
@@ -11238,7 +11235,6 @@ div.tooltip {
 
 .background {
   fill: transparent;
-  /* pointer-evens: all; */
 }
 
 .world {
@@ -11247,5 +11243,5 @@ div.tooltip {
 
 .myCircle:hover {
   stroke: black;
-}
+} 
 

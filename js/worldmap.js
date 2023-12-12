@@ -12,7 +12,7 @@ let centered, world;
 // style of geographic projection and scaling
 const projection = d3.geoRobinson()
 	.scale(130)
-	.translate([width / 2, height / 2]);
+	.translate([width/2, height/2]);
 
 // Define color scale
 const colorScale = d3.scaleThreshold()
