@@ -27,7 +27,6 @@ $(document).on("scroll", function() {
 });
 
 
-
   
 // Reload handler
   window.onload = function() {
@@ -66,4 +65,44 @@ function isElementInViewport(el) {
   handleScroll(); // Initial check on page load
   
   
-  
+// Highlight
+document.addEventListener("DOMContentLoaded", function () {
+    const highlightEffect = document.querySelector('.highlight-effect');
+
+    highlightEffect.addEventListener('mouseover', function () {
+        this.querySelector('.text-to-be').classList.add('highlighted');
+
+    });
+
+    highlightEffect.addEventListener('mouseout', function () {
+      this.classList.remove('highlighted');
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const highlightEffect = document.querySelector('.highlight-effect');
+
+    highlightEffect.addEventListener('mouseover', function () {
+    });
+
+    highlightEffect.addEventListener('mouseout', function () {
+      this.querySelector('.highlighted').classList.remove('highlighted');
+    });
+  });
+
+  // Function to scroll to the center of the section
+    function scrollToCenter() {
+      const section = document.getElementById('centerSection');
+      section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Attach the function to the window's scroll event
+    window.addEventListener('scroll', scrollToCenter);
+
+
+    $(function() {
+        $('a[href*=#]').on('click', function(e) {
+          e.preventDefault();
+          $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+        });
+      });

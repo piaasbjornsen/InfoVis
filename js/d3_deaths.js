@@ -13,7 +13,7 @@ var svg = d3.select("#my_dataviz")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-          // Parse the Data
+// Parse the Data
 d3.csv("out_dis.csv", function(data) {
 
 // X axis

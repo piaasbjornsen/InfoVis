@@ -1,52 +1,53 @@
 body {
-    background-color: #F2F3F6;
-    min-height: 100%;
-    font-family: "Verdana", sans-serif;
-  }
-  
-  h1 {
-    margin: 0;
-    font-size: 20px;
-    text-align: center;
-  }
-  
-  #legend {
-    font-size: 0.7em;
-    letter-spacing: 0.1;
-  }
-  
-  .map {
-    padding: 20px;
-    background-color: #FFFFFF;
-    border: 1px solid #4D8DC4;
-    box-shadow: 1px 1px 15px #000000;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  div.tooltip {   
-    position: absolute;
-    padding: 7px;
-    font-size: 0.8em;
-    pointer-events: none;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.25);
-  }  
-  
-  .background {
-    fill: transparent;
-    /* pointer-evens: all; */
-  }
-  
-  .world {
-    transform-origin: center;
-  }
+  text-align: center;
+  background-color: #011F3F;
+}
 
-.myCircle:hover {
-    stroke: black;
-  }
+#level-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  margin:  5%;
+  color: #FEF2BF;
+}
 
+.container {
+  /* display: block; */
+  /* width: 50%; */
+  margin: auto;
+
+}
+
+.btn {
+  margin: 25px;
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+  border-radius: 20%;
+}
+
+.game-over {
+  background-color: red;
+  opacity: 0.8;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
