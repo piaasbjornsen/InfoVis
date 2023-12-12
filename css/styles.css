@@ -11213,7 +11213,7 @@ body {
   transform: scale(1.5);
 }
 
-.about-section {
+.terrorism-section {
   padding: 7rem 0; /* Adjust padding as needed */
   margin: 0; /* Remove margin */
   /* background: linear-gradient(
@@ -11225,8 +11225,14 @@ body {
   background-color:rgba(20, 5, 2, 0.7) ;
 }
 
-.about-section p {
+.terrorism-section p {
   margin-bottom: 5rem;
+}
+
+.narrow-card {
+  max-width: 400px;
+  margin: 3rem;
+
 }
 
 .main-text {
