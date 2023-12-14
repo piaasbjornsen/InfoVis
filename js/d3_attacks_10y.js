@@ -6,7 +6,7 @@ var margin = {top: 100, right: 60, bottom: 60, left: 60},
     outerRadius = Math.min(width, height) / 2;   // the outerRadius goes from the middle of the SVG area to the border
 
 // append the svg object
-var svg = d3.select("#my_dataviz")
+var svg = d3.select("#my_dataviz1")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -30,7 +30,7 @@ d3.csv("attacks_by_country_10y.csv", function(data) {
   .domain([20995, 2494])
 
   // create a tooltip
-var Tooltip = d3.select("#my_dataviz")
+var Tooltip = d3.select("#my_dataviz1")
 .append("div")
 .style("opacity", 0)
 .attr("class", "tooltip")
