@@ -1,4 +1,5 @@
 
+
 //casualties by year 
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 20, left: 60},
@@ -71,9 +72,10 @@ d3.csv("number_terrorist_attacks_casualties_per_year.csv",
       }
       var mousemove = function(d) {
         Tooltip
-          .style("left", (d3.mouse(this)[0]+70) + "px")
-          .style("top", (d3.mouse(this)[1]) + "px")
           .html("Year : "+ d.date.getFullYear() + "<br/>" +" Casualties : "+d.value)
+          .style("left", (d3.mouse(this)[0]+70) + "px")
+          .style("top", (d3.mouse(this)[1]+5150) + "px")
+          
       }
       var mouseleave = function(d) {
         Tooltip
