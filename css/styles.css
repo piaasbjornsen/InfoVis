@@ -11639,8 +11639,24 @@ background-size: cover;
 }
 
 .definition-section {
+  width: 100vw;
   background-color: #F4EBD9;
+  width: 100vw;
 }
+
+
+.definition-section h4{
+  font-size: 2vw;
+}
+
+.definition-section h3{
+  font-size: 2vw;
+}
+
+.definition-section p{
+  font-size: 1vw;
+}
+
 
 .definition-card {
   max-width: 400px;
@@ -11731,9 +11747,6 @@ background-size: cover;
   
 }
 
-.projects-section .featured-text {
-  padding: 2rem;
-}
 
 @media (min-width: 992px) {
   .projects-section .featured-text {

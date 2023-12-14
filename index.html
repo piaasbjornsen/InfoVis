@@ -23,7 +23,7 @@
   <script src="js/scripts.js"></script>
   <script src="https://d3js.org/d3.v4.js"></script>
   <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
-  
+
 </head>
 
 <body id="page-top">
@@ -76,149 +76,94 @@
   <section class="terrorism-section text-center">
     <div class="container text-center">
       <div style="display: inline-block; align-items: center; justify-content: center;">
-      <!-- background-color: #F4EBD9; border: 2px solid black;  -->
-      <h1 class="line-1 anim-typewriter" style="color:#F4EBD9">First, we need to know what terrorism is</h1>
-    </div>
-    <h2 class="text-white" >
-      Many of us have strong associations to the word 'terrorism', evoking thoughts of violence,
-      tragedy, innocence lost, anger, and the complexity of politics and religion.
-      But what exactly is it, terrorism....
-    </h2>
-    <h3 class="highlight-effect" >
-      Let's look at some <span class="text-to-be p-1">definitions</span>
-    </h3>
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" style="enable-background:new 0 0 128 128;  width: 150px; height: 150px; margin-top: 3rem;"
+        <!-- background-color: #F4EBD9; border: 2px solid black;  -->
+        <h1 class="line-1 anim-typewriter" style="color:#F4EBD9">First, we need to know what terrorism is</h1>
+      </div>
+      <h2 class="text-white">
+        Many of us have strong associations to the word 'terrorism', evoking thoughts of violence,
+        tragedy, innocence lost, anger, and the complexity of politics and religion.
+        But what exactly is it, terrorism....
+      </h2>
+      <h3 class="highlight-effect">
+        Let's look at some <span class="text-to-be p-1">definitions</span>
+      </h3>
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" style="enable-background:new 0 0 128 128;  width: 150px; height: 150px; margin-top: 3rem;"
       xml:space="preserve">
       <path style="fill:#191919"
         d="M20.989 65.979C9.417 65.979 0 75.395 0 86.968c0 11.572 9.417 20.989 20.989 20.989H128v-7.067h-2.102c-5.353-12.791-2.738-22.597-.283-27.844H128v-7.067H20.989zm0 7.067h100.757a34.994 34.994 0 0 0-1.661 5.3H10.07a13.848 13.848 0 0 1 10.919-5.3zm-12.95 8.833h111.446a31.923 31.923 0 0 0-.247 3.533H7.155c.142-1.236.442-2.42.884-3.533zm-.831 7.067h112.117c.088 1.131.23 2.314.424 3.533H8.215a13.329 13.329 0 0 1-1.007-3.533zm13.781 11.943c-4.24 0-8.021-1.89-10.583-4.876h110.103a46.946 46.946 0 0 0 1.572 4.876H20.989zm78.955-80.845H10.6v7.067h3.304c5.424 12.667 3.039 22.455.636 27.844H10.6v7.067h89.344c11.572 0 20.989-9.417 20.989-20.989 0-11.573-9.417-20.989-20.989-20.989zm0 7.067c4.417 0 8.357 2.067 10.918 5.3H19.469a47.478 47.478 0 0 0-1.749-5.3h82.224zm0 27.843h-81.57a34.775 34.775 0 0 0 1.502-4.876h90.651a13.92 13.92 0 0 1-10.583 4.876zm12.774-8.409H20.477c.141-1.131.23-2.297.247-3.533h93.001a13.35 13.35 0 0 1-1.007 3.533zm-92.083-7.067a44.539 44.539 0 0 0-.424-3.533h92.683c.442 1.113.742 2.297.883 3.533H20.635z" />
     </svg> -->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" style="enable-background:new 0 0 128 128; width: 12vw; height: 12vw; margin-top: 2rem;" xml:space="preserve">
-      <path style="fill:#F4EBD9" d="M55.211 83.321c-.129-.092-12.863-8.956-31.239-8.442a1.411 1.411 0 0 1-1.462-1.325v-.001a1.42 1.42 0 0 1 1.364-1.494c19.386-.57 32.415 8.565 32.976 8.965l-1.639 2.297zm0-9.985c-.129-.092-12.863-8.957-31.239-8.442a1.41 1.41 0 0 1-1.462-1.325 1.42 1.42 0 0 1 1.364-1.494c19.385-.561 32.414 8.565 32.975 8.964l-1.638 2.297zm0-9.984c-.129-.092-12.86-8.958-31.239-8.442a1.41 1.41 0 0 1-1.462-1.325 1.42 1.42 0 0 1 1.364-1.494c19.385-.564 32.415 8.564 32.975 8.964l-1.638 2.297zm0-9.986c-.129-.092-12.862-8.961-31.239-8.442a1.412 1.412 0 0 1-1.463-1.325 1.42 1.42 0 0 1 1.364-1.494c19.385-.566 32.415 8.565 32.975 8.964l-1.637 2.297zm0-9.985c-.129-.092-12.862-8.962-31.239-8.442a1.412 1.412 0 0 1-1.463-1.325 1.42 1.42 0 0 1 1.364-1.494c19.385-.568 32.415 8.565 32.976 8.964l-1.638 2.297zM71.825 83.32l-1.639-2.296c.561-.398 13.595-9.518 32.975-8.963a1.419 1.419 0 0 1 1.364 1.493v.001a1.411 1.411 0 0 1-1.462 1.325c-18.444-.519-31.11 8.348-31.238 8.44zm0-9.985-1.639-2.296c.561-.398 13.595-9.52 32.975-8.964a1.419 1.419 0 0 1 1.364 1.493 1.41 1.41 0 0 1-1.462 1.325c-18.412-.525-31.11 8.35-31.238 8.442zm-.001-9.983-1.638-2.297c.559-.399 13.586-9.533 32.976-8.964a1.418 1.418 0 0 1 1.363 1.493v.001a1.41 1.41 0 0 1-1.462 1.325c-18.392-.52-31.11 8.35-31.239 8.442zm.001-9.987-1.639-2.296c.561-.399 13.595-9.524 32.975-8.964a1.42 1.42 0 0 1 1.364 1.493 1.411 1.411 0 0 1-1.463 1.325c-18.443-.528-31.109 8.351-31.237 8.442zm0-9.985-1.639-2.296c.561-.399 13.595-9.513 32.975-8.963a1.417 1.417 0 0 1 1.364 1.493 1.41 1.41 0 0 1-1.462 1.325c-18.444-.524-31.11 8.35-31.238 8.441zm39.519-22.105v5.007h.014v-5.007h-.014zm4.245-.635v-3.484l-2.045-.07c-28.756-.945-45.807 10.027-49.939 13.06-4.132-3.018-21.169-13.99-49.939-13.06l-2.045.07v3.484H0v86.241h54.65c1.664 2.426 5.218 4.09 9.35 4.09s7.7-1.664 9.364-4.09H128V20.64h-12.411zM5.641 101.24V26.282h5.98v66.919l2.172-.07c.24 0 22.354-.465 40.377 8.109H5.641zm55.454-1.1C44.453 90.112 22.748 88.984 15.852 88.9V21.275c25.992-.367 41.703 9.745 45.243 12.284v66.581zm4.231.493V34.109l.028.028c.169-.141 16.303-13.172 45.99-12.862h.014V88.9c-7.009.098-29.292 1.241-46.032 11.733zm57.033.607H73.04c18.01-8.561 40.123-8.109 40.377-8.109l2.172.056V26.282h6.77v74.958z"/>
-    </svg>
-  </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"
+        style="enable-background:new 0 0 128 128; width: 12vw; height: 12vw; margin-top: 2rem;" xml:space="preserve">
+        <path style="fill:#F4EBD9"
+          d="M55.211 83.321c-.129-.092-12.863-8.956-31.239-8.442a1.411 1.411 0 0 1-1.462-1.325v-.001a1.42 1.42 0 0 1 1.364-1.494c19.386-.57 32.415 8.565 32.976 8.965l-1.639 2.297zm0-9.985c-.129-.092-12.863-8.957-31.239-8.442a1.41 1.41 0 0 1-1.462-1.325 1.42 1.42 0 0 1 1.364-1.494c19.385-.561 32.414 8.565 32.975 8.964l-1.638 2.297zm0-9.984c-.129-.092-12.86-8.958-31.239-8.442a1.41 1.41 0 0 1-1.462-1.325 1.42 1.42 0 0 1 1.364-1.494c19.385-.564 32.415 8.564 32.975 8.964l-1.638 2.297zm0-9.986c-.129-.092-12.862-8.961-31.239-8.442a1.412 1.412 0 0 1-1.463-1.325 1.42 1.42 0 0 1 1.364-1.494c19.385-.566 32.415 8.565 32.975 8.964l-1.637 2.297zm0-9.985c-.129-.092-12.862-8.962-31.239-8.442a1.412 1.412 0 0 1-1.463-1.325 1.42 1.42 0 0 1 1.364-1.494c19.385-.568 32.415 8.565 32.976 8.964l-1.638 2.297zM71.825 83.32l-1.639-2.296c.561-.398 13.595-9.518 32.975-8.963a1.419 1.419 0 0 1 1.364 1.493v.001a1.411 1.411 0 0 1-1.462 1.325c-18.444-.519-31.11 8.348-31.238 8.44zm0-9.985-1.639-2.296c.561-.398 13.595-9.52 32.975-8.964a1.419 1.419 0 0 1 1.364 1.493 1.41 1.41 0 0 1-1.462 1.325c-18.412-.525-31.11 8.35-31.238 8.442zm-.001-9.983-1.638-2.297c.559-.399 13.586-9.533 32.976-8.964a1.418 1.418 0 0 1 1.363 1.493v.001a1.41 1.41 0 0 1-1.462 1.325c-18.392-.52-31.11 8.35-31.239 8.442zm.001-9.987-1.639-2.296c.561-.399 13.595-9.524 32.975-8.964a1.42 1.42 0 0 1 1.364 1.493 1.411 1.411 0 0 1-1.463 1.325c-18.443-.528-31.109 8.351-31.237 8.442zm0-9.985-1.639-2.296c.561-.399 13.595-9.513 32.975-8.963a1.417 1.417 0 0 1 1.364 1.493 1.41 1.41 0 0 1-1.462 1.325c-18.444-.524-31.11 8.35-31.238 8.441zm39.519-22.105v5.007h.014v-5.007h-.014zm4.245-.635v-3.484l-2.045-.07c-28.756-.945-45.807 10.027-49.939 13.06-4.132-3.018-21.169-13.99-49.939-13.06l-2.045.07v3.484H0v86.241h54.65c1.664 2.426 5.218 4.09 9.35 4.09s7.7-1.664 9.364-4.09H128V20.64h-12.411zM5.641 101.24V26.282h5.98v66.919l2.172-.07c.24 0 22.354-.465 40.377 8.109H5.641zm55.454-1.1C44.453 90.112 22.748 88.984 15.852 88.9V21.275c25.992-.367 41.703 9.745 45.243 12.284v66.581zm4.231.493V34.109l.028.028c.169-.141 16.303-13.172 45.99-12.862h.014V88.9c-7.009.098-29.292 1.241-46.032 11.733zm57.033.607H73.04c18.01-8.561 40.123-8.109 40.377-8.109l2.172.056V26.282h6.77v74.958z" />
+      </svg>
+    </div>
   </section>
-
-
-  <!-- <h1 class="highlight-h1">
-        Let look at some <span class="highlight-word">definitions</span> of terrorism
-      </h1> -->
-
-  <!-- <h1 class="text-white-50">
-        
-        
-        The united nations define terrorism as violence agains
-        sivilians with the attent of creating fear for political
-        influence. EUs definiton of terrorism 
-
-      
-      
-      
-        EU definition of terrorism
-        According to EU law, terrorist offences are acts committed with the aim of:
-        
-        seriously intimidating a population
-        unduly compelling a government or international organisation to perform or abstain from performing any act
-        seriously destabilising or destroying the fundamental political, constitutional, economic or social structures of a country or an international organisation</h1> -->
-  <!-- <div class="card definition-card">
-      <div class="card-header">
-        EU
-      </div>
-      <div class="card-body custom-bg-primary">
-        <h6 class="card-text">Terrorist offences are acts committed with the aim of:</h6>
-        <ul class="text-left">
-          <li>Seriously intimidating a population</li>
-          <li>Unduly compelling a government or international organisation to perform or abstain from performing any act</li>
-          <li>Seriously destabilising or destroying the fundamental political, constitutional, economic or social structures of a country or an international organisation</li>
-        </ul>
-        <a href="https://www.consilium.europa.eu/en/policies/fight-against-terrorism/" class="btn btn-primary">Visit</a>
-      </div>
-    </div> -->
-
-  <!-- <div class="row">
-      <div class="col-md-8" style="padding-left: 8rem; padding-right: 5rem;">
-        <div id="my_dataviz"></div>
-      </div>
-      <div class="col-md-4" style="padding-right: 3rem;">
-        <div class="p-3">
-          <p>The united nations define terrorism as violence agains
-            sivilians with the attent of creating fear for political
-            influence..</p>
-        </div>
-      </div>
-    </div> -->
-
 
   <!-- Projects-->
   <section class="definition-section" id="projects">
-    <div class="container px-4 px-lg-5">
+    <div class="" style="padding-left: 2vw; padding-right: 2vw;">
       <!-- Featured Project Row-->
       <!-- row 1 -->
-      <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-        <div class="col-xl-7 col-lg-6 offset-xl-1">
-          <img src="assets/img/eu.png" alt="EU Flag"  style="max-height: 30rem; width: auto;">
+      <div class="row gx-0 mb-4 mb-lg-5 align-items-center" style="width: 100%; height: auto;">
+        <!-- <div class="col-xl-7 col-lg-6 offset-xl-1"> -->
+        <div class="col-7" style="padding-right: 2vw;">
+          <img src="assets/img/eu.png" alt="EU Flag" style="max-width:auto ; width: 100%;">
         </div>
-        <div class="col-xl-4 col-lg-5">
-          <div class="featured-text text-center text-lg-left ">
+        <div class="col-5" style="text-align: left;">
             <h4>European Union</h4>
             <p class="text-black-50 mb-0">
               According to EU law, terrorist offences are acts committed with the aim of:
-        
-        seriously intimidating a population
-        unduly compelling a government or international organisation to perform or abstain from performing any act
-        seriously destabilising or destroying the fundamental political, constitutional, economic or social structures of a country or an international organisation
+
+              seriously intimidating a population
+              unduly compelling a government or international organisation to perform or abstain from performing any act
+              seriously destabilising or destroying the fundamental political, constitutional, economic or social
+              structures of a country or an international organisation
             </p>
-          </div>
         </div>
       </div>
-        <!-- row 2 -->
-      <div class="row gx-0 justify-content-center">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="assets/img/nederland.jpg" alt="..." style="width: 100%; height: auto;"/>
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class=" text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="featured-text text-center text-lg-left">
+      <!-- row 2 -->
+      <div class="row gx-0 mb-4 mb-lg-5 align-items-center" style="width: 100%; height: auto;">
+        <div class="col-7" style="padding: 2vw; text-align: right;">
                 <h4>The Netherlands</h4>
-                <p class="text-black-50 mb-0" style="margin-right: 2rem;">
-                  Terrorism involves crimes committed for ideological motives. Terrorists focus on preparing 
+                <p class="text-black-50 mb-0" >
+                  Terrorism involves crimes committed for ideological motives. Terrorists focus on preparing
                   or committing serious acts of violence. Typically, these acts aim to disrupt society with the
-                   goal of bringing about societal changes, instilling serious fear in the population, or
-                  influencing political decision-making. Terrorism and online hate speech manifest in various 
-                  forms on the internet. Radical and terrorist expressions can be made online, including texts 
+                  goal of bringing about societal changes, instilling serious fear in the population, or
+                  influencing political decision-making. Terrorism and online hate speech manifest in various
+                  forms on the internet. Radical and terrorist expressions can be made online, including texts
                   and videos that call for acts of violence.
                 </p>
-              </div>
-          </div>
         </div>
-  </div>
+        <div class="col-5">
+          <img class="img-fluid" src="assets/img/nederland.jpg" alt="..." style="width: 100%; height: auto;" />
+        </div>
+      </div>
+      <!-- row 3 -->
+      <div class="row gx-0 align-items-center" style="width: 100%; height: auto;">
+        <div class="col-3">
+          <img class="img-fluid" src="assets/img/fn.png" alt="..." style="width: 100%; height: auto; " />
+        </div>
+        <div class="col-4" style="padding: 2vw; text-align: left;">
+                <h4>United Nations</h4>
+                <p class="text-black-50 mb-0" >
+                  Terrorism is the use of violence against civilians to instill fear with the goal of political
+                  influence.
+                  Terrorism is an illegal method of violence and a form of violent extremism.
+                </p>
+        </div>
+        <div class="col-5">
+          <h3>The common thread in these definitions of terrorism is the use of violence or the threat of violence for
+            ideological purposes. Whether it's intimidating
+            a population, compelling a government or organization, or destabilizing fundamental structures, terrorism
+            involves actions aimed at creating fear,
+            influencing political decisions, and causing significant societal disruption.</h3>
+        </div>
+      </div>
 
-    <!-- row 3 -->
-    <div class="row gx-0 mb-5 mb-lg-0 justify-content-center" style="margin-top: 2rem;">
-      <div class="col-lg-6">
-        <img class="img-fluid" src="assets/img/fn.png" alt="..." style="width: 100%; height: auto; "/>
-      </div>
-      <div class="col-lg-6">
-        <div class=" text-center h-100 project">
-          <div class="d-flex h-100">
-            <div class="featured-text text-center text-lg-left">
-              <h4>United Nations</h4>
-              <p class="text-black-50 mb-0" style="margin-left: 2rem;">
-                Terrorism is the use of violence against civilians to instill fear with the goal of political influence.
-                Terrorism is an illegal method of violence and a form of violent extremism.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
-  <div class="row gx-0 mb-5 mb-lg-0 justify-content-center"  style="margin: 2rem;">
-  <h3>The common thread in these definitions of terrorism is the use of violence or the threat of violence for ideological purposes. Whether it's intimidating
-     a population, compelling a government or organization, or destabilizing fundamental structures, terrorism involves actions aimed at creating fear,
-      influencing political decisions, and causing significant societal disruption.</h3>
-   </div>
+    </div>
   </section>
-  
+
   <!-- New section -->
   <section class="projects-section text-center">
     <div class="container px-4 px-lg-5">
