@@ -1,63 +1,92 @@
-var root = am5.Root.new("chartdiv"); 
+var margin = {top: 10, right: 10, bottom: 10, left: 10},
+    width = 850 - margin.left - margin.right,
+    height = 480 - margin.top - margin.bottom;
 
-// Set themes
-root.setThemes([
-  am5themes_Animated.new(root)
-]);
+var svg = d3.select("#sankey-diagram").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// Create series
-var series = root.container.children.push(
-  am5flow.Sankey.new(root, {
-    sourceIdField: "from",
-    targetIdField: "to",
-    valueField: "value",
-    nodeWidth: 20
-  })
-);
+var color = d3.scaleOrdinal(d3.schemeDark2);
 
-series.nodes.get("colors").set("step", 2);
+var sankey = d3.sankey()
+    .nodeWidth(36)
+    .nodePadding(25)
+    .size([width, height]);
 
-// Set data
-series.data.setAll([
-  { from: "2011", to: "Iraq", value: 10 },
-  { from: "2012", to: "B", value: 10 },
-  { from: "2013", to: "B", value: 10 },
-  { from: "2014", to: "B", value: 10 },
-  { from: "2015", to: "B", value: 10 },
-  { from: "2016", to: "B", value: 10 },
-  { from: "2017", to: "B", value: 10 },
-  { from: "2018", to: "B", value: 10 },
-  { from: "2019", to: "B", value: 10 },
-  { from: "2020", to: "B", value: 10 },
-  { from: "2021", to: "B", value: 10 },
-  { from: "B", to: "C", value: 8 },
-  { from: "C", to: "D", value: 4 },
-  { from: "C", to: "E", value: 3 },
-  { from: "D", to: "G", value: 5 },
-  { from: "D", to: "I", value: 2 },
-  { from: "D", to: "H", value: 3 },
-  { from: "E", to: "H", value: 6 },
-  { from: "G", to: "J", value: 5 },
-  { from: "I", to: "J", value: 1 },
-  { from: "H", to: "J", value: 9 }
-]);
+d3.json("sankey-data.json", function(error, graph) {
+    sankey
+        .nodes(graph.nodes)
+        .links(graph.links)
+        .layout(32);
 
-series.links.template.setAll({
-    fillStyle: "solid"
-  });
+    var link = svg.append("g")
+        .selectAll(".link")
+        .data(graph.links)
+        .enter()
+        .append("path")
+        .attr("class", "link")
+        .attr("d", sankey.link() )
+        .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+        .sort(function(a, b) { return b.dy - a.dy; })
+        .on("mouseover", function(d) {
+            // Show tooltip on mouseover
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", .9);
+            tooltip.html(d.value)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+        })
+        .on("mouseout", function(d) {
+            // Hide tooltip on mouseout
+            tooltip.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
 
-series.nodes.rectangles.template.setAll({
-  fillOpacity: 0.5,
-  stroke: am5.color("black"),
-  strokeWidth: 1,
-  cornerRadiusTL: 4,
-  cornerRadiusTR: 4,
-  cornerRadiusBL: 4,
-  cornerRadiusBR: 4,
+    var node = svg.append("g")
+        .selectAll(".node")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+        .call(d3.drag()
+            .subject(function(d) { return d; })
+            .on("start", function() { this.parentNode.appendChild(this); })
+            .on("drag", dragmove));
+
+    node.append("rect")
+        .attr("height", function(d) { return d.dy; })
+        .attr("width", sankey.nodeWidth())
+        .style("fill", function(d) { return d.color = color(d.name.replace(/ .*/, "")); })
+        .style("stroke", function(d) { return d3.rgb(d.color).darker(9); })
+        .append("title")
+        .text(function(d) { return d.name + "\n" + d.value ; });
+
+    node.append("text")
+        .attr("x", -6)
+        .attr("y", function(d) { return d.dy / 2; })
+        .attr("dy", ".35em")
+        .attr("text-anchor", "end")
+        .attr("transform", null)
+        .text(function(d) { return d.name; })
+        .filter(function(d) { return d.x < width / 2; })
+        .attr("x", 3 + sankey.nodeWidth())
+        .attr("text-anchor", "start");
+
+    function dragmove(d) {
+        d3.select(this)
+            .attr("transform", "translate(" + d.x + "," + (d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))) + ")");
+        sankey.relayout();
+        link.attr("d", sankey.link());
+    }
+
+    // Tooltip setup
+    var tooltip = d3.select("#sankey-diagram")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 });
 
-series.nodes.labels.template.setAll({
-  x: am5.percent(50),
-  centerX: am5.percent(50),
-  textAlign: "center"
-});
