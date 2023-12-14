@@ -1,14 +1,20 @@
 
 //casualties by year 
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 20, left: 60},
-    width = 960 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+var margin = {top: 10, right: 30, bottom: 20, left: 60};
+var aspectRatio = 2 / 3; // You can adjust this ratio based on your preference
 
-// append the svg object to the body of the page
+// Get the width and height of the container
+var container = document.getElementById('my_dataviz');
+
+// Calculate width and height based on the container size
+var width = (container.clientWidth - margin.left - margin.right);
+var height = width * aspectRatio;
+
+// Append the SVG object to the body of the page
 var svg = d3.select("#my_dataviz")
   .append("svg")
-    .attr("width", width + margin.left + margin.right)
+    .attr("width", container.clientWidth)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform",
