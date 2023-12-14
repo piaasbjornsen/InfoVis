@@ -5,7 +5,7 @@ const svg = d3.select("svg"),
 	path = d3.geoPath(),
 	data = d3.map(),
 	worldmap = "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson",
-	worldpopulation = "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world_population.csv";
+	worldattackcount = "code_attacks.csv";
 
 let centered, world;
 
@@ -16,8 +16,8 @@ const projection = d3.geoRobinson()
 
 // Define color scale
 const colorScale = d3.scaleThreshold()
-	.domain([100000, 1000000, 10000000, 30000000, 100000000, 500000000])
-	.range(d3.schemeOrRd[7]);
+	.domain([10, 100, 300, 500,1000,3000,10000,15000])
+	.range(d3.schemeOrRd[9]);
 
 // add tooltip
 const tooltip = d3.select("body").append("div")
@@ -27,8 +27,8 @@ const tooltip = d3.select("body").append("div")
 // Load external data and boot
 d3.queue()
 	.defer(d3.json, worldmap)
-	.defer(d3.csv, worldpopulation, function(d) {
-		data.set(d.code, +d.pop);
+	.defer(d3.csv, worldattackcount, function(d) {
+		data.set(d.code, +d.count);
 	})
 	.await(ready);
 
@@ -63,7 +63,7 @@ function ready(error, topo) {
 			.style("top", (d3.event.pageY - 28) + "px")
 			.transition().duration(400)
 			.style("opacity", 1)
-			.text(d.properties.name + ': ' + Math.round((d.total / 1000000) * 10) / 10 + ' mio.');
+			.text(d.properties.name + ': ' + d.total);
 	}
 
 	let mouseLeave = function() {
@@ -150,12 +150,13 @@ function ready(error, topo) {
 			return height - (i * ls_h) - ls_h - 6;
 		})
 		.text(function(d, i) {
-			if (i === 0) return "< " + d[1] / 1000000 + " m";
-			if (d[1] < d[0]) return d[0] / 1000000 + " m +";
-			return d[0] / 1000000 + " m - " + d[1] / 1000000 + " m";
+			if (i === 0) return "< " + d[1];
+			if (i === 8) return " > " + 15000;
+			if (d[1] < d[0]) return d[0];
+			return d[0]+ " - " + d[1];
 		});
 
-	legend.append("text").attr("x", 15).attr("y", 280).text("Population (Million)");
+	legend.append("text").attr("x", 15).attr("y", 235).text("Attacks");
 }
 
 // Zoom functionality

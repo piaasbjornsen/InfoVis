@@ -45,18 +45,37 @@ import re
 
 
 
-file1_df = pd.read_csv('attacks_by_country.csv',usecols=[0,1],names=['name','count'])
-file2_df = pd.read_csv('world_population.csv',usecols=[0,1,2],names=['name','code','pop'])
+# file1_df = pd.read_csv('attacks_by_country.csv',usecols=[0,1],names=['name','count'])
+# file2_df = pd.read_csv('world_population.csv',usecols=[0,1,2],names=['name','code','pop'])
 
-file1_df['name']= file1_df['name'].str.upper().to_frame()
-file2_df['name']= file2_df['name'].str.upper().to_frame()
+# file1_df['name']= file1_df['name'].str.upper().to_frame()
+# file2_df['name']= file2_df['name'].str.upper().to_frame()
 
 
-file1_df['code'] = file1_df['name'].map(dict(file2_df[['name', 'code']].to_numpy())).to_frame()
-file1_df.to_csv("country_attacks_code.csv",index=False)
+# file1_df['code'] = file1_df['name'].map(dict(file2_df[['name', 'code']].to_numpy())).to_frame()
+# file1_df.to_csv("country_attacks_code.csv",index=False)
+
+# new_frame= pd.read_csv(r'country_attacks_code.csv')
+# code_attacks=new_frame.groupby('code')['count'].sum().to_frame()
+# code_attacks.rename(columns={1 :'attack_count'}, inplace=True )
+# code_attacks.to_csv("code_attacks.csv")
+
+df1 = pd.read_csv(r'globalterrorismdb.csv')
+df2= pd.read_csv(r'globalterrorismdb_2021Jan-June_1222dist.csv')
+
+filtered_df1= df1.loc[(df1['iyear'])>=2011]
+filtered_df1=filtered_df1[['iyear','country_txt','gname']]
+
+filtered_df2= df2.loc[(df2['iyear'])>=2011]
+filtered_df2= filtered_df2[['iyear','country_txt','gname']]
                                         
+filtered_frames=[filtered_df1,filtered_df2]
+filtered_result= pd.concat(filtered_frames,ignore_index=True)
+filtered_result.to_csv("terrorist_gnames.csv",index=False)                                  
                                         
     
 
 
+filtered_result_2021= filtered_result.loc[(filtered_result['iyear'])==2021]
+filtered_result_2021['gname'].value_counts().to_frame().reset_index()[:10].to_csv("2021_gattacks.csv",index=False)
 
