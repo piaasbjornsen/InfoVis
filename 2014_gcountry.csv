@@ -1,0 +1,20 @@
+country_txt,iyear,gname,count
+Afghanistan,2014,Taliban,1033
+Pakistan,2014,Taliban,1
+Afghanistan,2014,Unknown,775
+India,2014,Unknown,296
+Iraq,2014,Unknown,2764
+Nigeria,2014,Unknown,107
+Pakistan,2014,Unknown,1629
+Philippines,2014,Unknown,160
+Somalia,2014,Unknown,83
+Syria,2014,Unknown,123
+Thailand,2014,Unknown,319
+Yemen,2014,Unknown,272
+India,2014,Maoists,252
+Yemen,2014,Al-Qaida in the Arabian Peninsula (AQAP),294
+Somalia,2014,Al-Shabaab,787
+Nigeria,2014,Boko Haram,436
+Iraq,2014,Islamic State of Iraq and the Levant (ISIL),1101
+Syria,2014,Islamic State of Iraq and the Levant (ISIL),114
+Yemen,2014,Houthi extremists (Ansar Allah),169
