@@ -1,5 +1,5 @@
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
-    width = 850 - margin.left - margin.right,
+    width = 1050 - margin.left - margin.right,
     height = 480 - margin.top - margin.bottom;
 
 var svg = d3.select("#sankey-diagram").append("svg")
