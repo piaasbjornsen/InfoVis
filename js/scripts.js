@@ -51,14 +51,14 @@ function isElementInViewport(el) {
     );
   }
   
-  function handleScroll() {
-    var element = document.querySelector('.line-1');
+  // function handleScroll() {
+  //   var element = document.querySelector('.line-1');
   
-    if (isElementInViewport(element)) {
-      element.classList.add('visible');
-      window.removeEventListener('scroll', handleScroll);
-    }
-  }
+  //   if (isElementInViewport(element)) {
+  //     element.classList.add('visible');
+  //     window.removeEventListener('scroll', handleScroll);
+  //   }
+  // }
   
   window.addEventListener('scroll', handleScroll);
   
@@ -90,11 +90,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Function to scroll to the center of the section
-    function scrollToCenter() {
-      const section = document.getElementById('centerSection');
-      section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+  // // Function to scroll to the center of the section
+  //   function scrollToCenter() {
+  //     const section = document.getElementById('centerSection');
+  //     section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  //   }
 
     // Attach the function to the window's scroll event
     window.addEventListener('scroll', scrollToCenter);

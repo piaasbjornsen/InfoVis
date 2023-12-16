@@ -22,59 +22,45 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="js/scripts.js"></script>
   <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 </head>
 
 <body id="page-top">
   <!-- Masthead-->
   <header class="masthead">
-    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-      <div class="d-flex justify-content-center ">
-        <div class="text-center">
-          <div class="first-fade-in fade">
-            <h1 class="mx-auto my-0 text-uppercase" style="font-family: serif; color: rgba(244, 235, 217, 1) !important;
-            ">
-              Unmasking terrorism
-            </h1>
-          </div>
-          <div class="second-fade-in fade">
-            <h2 class="text-white-50 mx-auto mt-4"
-              style="font-family: serif; background-color: rgba(53, 33, 33, 0.7); padding: 10px;">
-              Beyond the headlines
-            </h2>
-          </div>
-          <div class="third-fade-in fade">
-            <div class="">
-              <img class="img-fluid zoom" src="assets/img/911.webp" alt="..."
-                style="width: 20%; height: auto; z-index: 0; padding-top: 3rem;" />
-              <img class="img-fluid zoom" src="assets/img/paris.png" alt="..."
-                style="width: 15%; height: auto; z-index: 0;  padding-top: 3cap" />
-              <img class="img-fluid zoom" src="assets/img/uk.jpeg" alt="..."
-                style="width: 20%; height: auto; z-index: 0;  padding-top: 3rem" />
-            </div>
-            <!-- <h3 class="text-white mx-auto mt-5 mb-2" style="font-family: serif; border-top: 1px solid #ccc;">
-              Terrorism is a war where the front lines are within the depths
-              of our minds. Media outlets flood our screens and front pages
-              with alarming stories. But how deadly is terrorism, truly?
-            </h3> -->
-          </div>
-          <div class="tag scroll-reveal" style="padding-top: 5rem; padding-bottom: 7rem;">
-            <h3 class="mx-auto mt-5 mb-2"
-              style="font-family: serif; color: rgba(244, 235, 217, 1); border-top: 2px solid #F4EBD9;">
-              Terrorism is a war where the front lines are within the depths
-              of our minds. Media outlets flood our screens and front pages
-              with alarming stories, but how deadly is terrorism, truly?
-            </h3>
-          </div>
-        </div>
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+      <div class="mb-3 mt-4 text-center">
+        <h1 class="text-uppercase first-fade-in fade" style="font-family: serif; color: rgba(244, 235, 217, 1); font-size: 7vw;">
+          Unmasking terrorism
+        </h1>
+      </div>
+      <div class="mb-3 text-center second-fade-in fade">
+        <h2 class="text-white-50" style="font-family: serif; background-color: rgba(53, 33, 33, 0.7); padding-left: 20px; padding-right: 20px; font-size: 2vw;">
+          Beyond the headlines
+        </h2>
+      </div>
+      <div class="mb-3 text-center third-fade-in fade">
+          <img class="img-fluid zoom" src="assets/img/911.webp" alt="..." style="width: 20%; height: auto; z-index: 0;" />
+          <img class="img-fluid zoom" src="assets/img/paris.png" alt="..." style="width: 15%; height: auto; z-index: 0;" />
+          <img class="img-fluid zoom" src="assets/img/uk.jpeg" alt="..." style="width: 20%; height: auto; z-index: 0;" />
+      </div>
+      <div class="mb-3 tag scroll-reveal text-center" >
+        <h3 class="mt-4" style="font-family: serif; color: rgba(244, 235, 217, 1); border-top: 2px solid #F4EBD9; font-size: 1.5vw;">
+          Terrorism is a war where the front lines are within the depths
+          of our minds. Media outlets flood our screens and front pages
+          with alarming stories, but how deadly is terrorism, truly?
+        </h3>
       </div>
     </div>
+  </header>
+  
   </header>
   <!-- What is terrorism-->
 
   <section class="terrorism-section text-center">
-    <div class="container text-center">
+    <div class="container d-flex align-items-center justify-content-center">
       <div style="display: inline-block; align-items: center; justify-content: center;">
         <!-- background-color: #F4EBD9; border: 2px solid black;  -->
         <h1 class="line-1 anim-typewriter" style="color:#F4EBD9">First, we need to know what terrorism is</h1>
@@ -164,43 +150,17 @@
   </section>
 
   <!-- New section -->
-  <section class="casualties-per-year-section text-center " >
+  <section class="casualties-per-year-section">
     <div style="width: 100vw;">
-      <h3  style="color: #140502B3; padding: 5vw;">
-        Now that know a little more about what terrorism means, let have a look at how widespread it is, and has been
+      <h3 style="color: #140502B3; ">
+        Now that know a little more about what terrorism means, lets have a look at how widespread it is, and has been
         throughout the years
       </h3>
     </div>
-    <div  style="width: 100vw; display: flex; align-items: center;">
-      <div style="width: 50vw;  margin: auto;"  id="my_dataviz"></div>
-    </div>
+    <div id="casualties-per-year"></div>
+    <div id="cause_of_death" style="width:100vw"></div>
   </section>
-  <!-- Signup-->
-   
-     
-         <!--  total causualties over the years --from 1970 to 2021 due to terrorist attacks:   
-        <div id="graph"><h4>Number of Casualties due to Terrorist Attacks</h4></div> 
-        <script src="js/d3.js" charset="utf-8"></script> -->
 
-
-        <!--  causes of deaths around the world 
-         <div id="my_dataviz"></div>
-         <script src="js/d3_deaths.js" charset="utf-8"></script> -->
-
-         <!-- world map of distribution of terrorism (total count of attacks from 1970 to 2021).
-        <div class="map"><h1>World Terrorist Attack Map</h1><svg id="my_dataviz2" width="800" height="450"></svg></div>
-        <script src="js/worldmap.js" charset="utf-8"></script> -->
-         
-
-        <!-- top 10 countries affected by terrorism (attack count)
-        <div id="my_dataviz1"></div>
-        <script src="js/d3_attacks_10y.js" charset="utf-8"></script> -->
-
-      
-        <!-- 2011 to 2021 group responsible for attacks in top 10 countries (attack count wise)
-        <div id="sankey-diagram"></div>
-        <script src="js/sankey.js" charset="utf-8"></script> -->
- 
   <!-- Footer-->
   <footer class="footer bg-black small text-center text-white-50">
     <div class="container px-4 px-lg-5">
@@ -215,11 +175,12 @@
   <!-- * *                               SB Forms JS                               * *-->
   <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
   <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  <!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
   <script src="js/d3.js" charset="utf-8"></script>
+  <script src="js/d3_deaths.js" charset="utf-8"></script>
 
 </body>
 
