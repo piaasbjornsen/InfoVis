@@ -1,21 +1,33 @@
-
 // set the dimensions and margins of the graph
-var margin = {top: 50, right: 50, bottom: 190, left: 80},
-    width = 1000 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+var margin = {top: 50, right: 50, bottom: 190, left: 80};
+    // width = 1000 - margin.left - margin.right,
+    // height = 700 - margin.top - margin.bottom;
 
+var aspectRatio = 2/3; // You can adjust this ratio based on your preference
+
+var container = document.getElementById('my_dataviz');
+var width = (container.clientWidth - margin.left - margin.right);
+var height = width * aspectRatio;
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz")
   .append("svg")
-    .attr("width", width + margin.left + margin.right)
+    .attr("width", container.clientWidth)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+        "translate(" + margin.left + "," + margin.top + ")");
+
 
 // Parse the Data
-d3.csv("out_dis.csv", function(data) {
-
+d3.csv("assets/csv/out_dis.csv")
+.then(function(data) {
+  // Convert data to an array of objects
+  var dataArray = data.map(function(d) {
+    return {
+      Diseases: d.Diseases,
+      Deaths: +d.Deaths // Convert Deaths to a number
+    };
+  });
 // X axis
 var x = d3.scaleBand()
   .range([ 0, width ])
@@ -66,29 +78,29 @@ var Tooltip = d3.select("#my_dataviz")
     }
 
 
-//Bars
-svg.selectAll("mybar")
-  .data(data)
-  .enter()
-  .append("rect")
-    .attr("class", "myCircle")
-    .attr("x", function(d) { return x(d.Diseases); })
-    .attr("width", x.bandwidth())
-    .attr("fill", "#69b3a2")
-    .on("mouseover", mouseover)
-    .on("mousemove", mousemove)
-    .on("mouseleave", mouseleave)
-    // no bar at the beginning thus:
-    .attr("height", function(d) { return height - y(0); }) // always equal to 0
-    .attr("y", function(d) { return y(0); })
+  //Bars
+  svg.selectAll("mybar")
+    .data(data)
+    .enter()
+    .append("rect")
+      .attr("class", "myCircle")
+      .attr("x", function(d) { return x(d.Diseases); })
+      .attr("width", x.bandwidth())
+      .attr("fill", "#69b3a2")
+      .on("mouseover", mouseover)
+      .on("mousemove", mousemove)
+      .on("mouseleave", mouseleave)
+      // no bar at the beginning thus:
+      .attr("height", function(d) { return height - y(0); }) // always equal to 0
+      .attr("y", function(d) { return y(0); })
 
-// Animation
-svg.selectAll("rect")
-  .transition()
-  .duration(800)
-  .attr("y", function(d) { return y(d.Deaths); })
-  .attr("height", function(d) { return height - y(d.Deaths); })
-  .delay(function(d,i){console.log(i) ; return(i*100)})
+  // Animation
+  svg.selectAll("rect")
+    .transition()
+    .duration(800)
+    .attr("y", function(d) { return y(d.Deaths); })
+    .attr("height", function(d) { return height - y(d.Deaths); })
+    .delay(function(d,i){console.log(i) ; return(i*100)})
 
 })
 
