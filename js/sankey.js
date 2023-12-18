@@ -1,5 +1,5 @@
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
-    width = 1050 - margin.left - margin.right,
+    width = 750 - margin.left - margin.right,
     height = 480 - margin.top - margin.bottom;
 
 var svg = d3.select("#sankey-diagram").append("svg")
@@ -12,7 +12,7 @@ var color = d3.scaleOrdinal(d3.schemeDark2);
 
 var sankey = d3.sankey()
     .nodeWidth(36)
-    .nodePadding(25)
+    .nodePadding(10)
     .size([width, height]);
 
 d3.json("sankey-data.json", function(error, graph) {
@@ -35,7 +35,7 @@ d3.json("sankey-data.json", function(error, graph) {
             tooltip.transition()
                 .duration(200)
                 .style("opacity", .9);
-            tooltip.html(d.value)
+            tooltip.html("Attacks: " + d.value + "<br/>Year: " + d.Year)
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
         })
