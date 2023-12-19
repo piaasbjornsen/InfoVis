@@ -1,0 +1,21 @@
+country_txt,iyear,gname,count
+Afghanistan,2016,Taliban,1062
+Pakistan,2016,Taliban,3
+Afghanistan,2016,Unknown,490
+India,2016,Unknown,448
+Iraq,2016,Unknown,2109
+Nigeria,2016,Unknown,129
+Pakistan,2016,Unknown,577
+Philippines,2016,Unknown,318
+Somalia,2016,Unknown,90
+Syria,2016,Unknown,101
+Thailand,2016,Unknown,253
+Yemen,2016,Unknown,140
+India,2016,Maoists,267
+Somalia,2016,Al-Shabaab,506
+Nigeria,2016,Boko Haram,169
+Iraq,2016,Islamic State of Iraq and the Levant (ISIL),1222
+Philippines,2016,Islamic State of Iraq and the Levant (ISIL),8
+Syria,2016,Islamic State of Iraq and the Levant (ISIL),152
+Yemen,2016,Islamic State of Iraq and the Levant (ISIL),1
+Yemen,2016,Houthi extremists (Ansar Allah),631
