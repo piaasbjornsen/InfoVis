@@ -11542,11 +11542,11 @@ body {
 }
 
 .third-fade-in {
-  animation: fadeIn 5s 2s forwards; /* Start the animation after 2s and keep the final state */
-  -webkit-animation: fadeIn 5s 2s forwards;
-  -moz-animation: fadeIn 5s 2s forwards;
-  -o-animation: fadeIn 5s 2s forwards;
-  -ms-animation: fadeIn 5s 2s forwards;
+  animation: fadeIn 5s 1.2s forwards; /* Start the animation after 2s and keep the final state */
+  -webkit-animation: fadeIn 5s 1.2s forwards;
+  -moz-animation: fadeIn 5s 1.2s forwards;
+  -o-animation: fadeIn 5s 1.2s forwards;
+  -ms-animation: fadeIn 5s 1.2s forwards;
 }
 
 @keyframes fadeIn {
@@ -11568,6 +11568,9 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+
 
 .zoom {
   /* padding: 50px; */
@@ -11703,8 +11706,8 @@ to{border-right-color: transparent;}
 
 
 
-.casualties-per-year-section {
-  padding: 5vw 0; /* Adjust padding as needed */
+.casualities-section {
+  padding: 5vw 5vw; /* Adjust padding as needed */
   margin: 0; /* Remove margin */
   width: 100vw;
   text-align: center;
@@ -11716,6 +11719,20 @@ to{border-right-color: transparent;}
 
 }
 
+.deaths-section {
+  padding: 5vw 5vw; /* Adjust padding as needed */
+  margin: 0; /* Remove margin */
+  width: 100vw;
+  height: auto;
+  text-align: center;
+  background-color: rgba(20, 5, 2, 0.7)  ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
 #my_dataviz {
   width: 100%;
   height: auto;
@@ -11723,89 +11740,6 @@ to{border-right-color: transparent;}
   position: relative;
 }
 
-
-/* @media (min-width: 992px) {
-  .projects-section .featured-text {
-    padding: 0 0 0 2rem;
-    border-left: 0.5rem solid #ffffff;
-  }
-}
-.projects-section .project-text {
-  padding: 3rem;
-  font-size: 90%;
-}
-@media (min-width: 992px) {
-  .projects-section .project-text {
-    padding: 5rem;
-  }
-} */
-
-.signup-section {
-  padding: 10rem 0;
-  background: linear-gradient(
-      to bottom,
-      rgba(37, 9, 2, 0.4) 0%,
-      rgba(37, 9, 2, 0.4) 100%
-    ),
-    url("../assets/img/bg-signup.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-}
-.signup-section .form-signup input {
-  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
-  padding: 1.25rem 2rem;
-  height: auto;
-  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 80%;
-  text-transform: uppercase;
-  letter-spacing: 0.15rem;
-  border: 0;
-}
-
-.contact-section {
-  padding-top: 5rem;
-}
-.contact-section .card {
-  border: 0;
-  border-bottom: 0.25rem solid #64a19d;
-}
-.contact-section .card h4,
-.contact-section .card .h4 {
-  font-size: 0.8rem;
-  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  text-transform: uppercase;
-  letter-spacing: 0.15rem;
-}
-.contact-section .card hr {
-  opacity: 1;
-  border-color: #64a19d;
-  border-width: 0.25rem;
-  width: 3rem;
-}
-.contact-section .social {
-  margin-top: 5rem;
-}
-.contact-section .social a {
-  text-align: center;
-  height: 3rem;
-  width: 3rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 100%;
-  line-height: 3rem;
-  color: rgba(255, 255, 255, 0.3);
-}
-.contact-section .social a:hover {
-  color: rgba(255, 255, 255, 0.5);
-}
-.contact-section .social a:active {
-  color: #fff;
-}
 
 .footer {
   padding: 5rem 0;

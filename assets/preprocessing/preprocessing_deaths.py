@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 
-df = pd.read_csv('annual-number-of-deaths-by-cause.csv')
+df = pd.read_csv('assets/csv/annual-number-of-deaths-by-cause.csv')
 diseases = list(df)[4:]
 total = []
 total_years = []
