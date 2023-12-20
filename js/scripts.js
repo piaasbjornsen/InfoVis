@@ -84,12 +84,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    $(function() {
-        $('a[href*=#]').on('click', function(e) {
-          e.preventDefault();
-          $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
-        });
-      });
+    // $(function() {
+    //     $('a[href*=#]').on('click', function(e) {
+    //       e.preventDefault();
+    //       $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+    //     });
+    //   });
 
 
 
@@ -120,4 +120,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var typewriterElement = document.querySelector(".anim-typewriter");
   observer.observe(typewriterElement);
+});
+
+
+// timeline
+document.addEventListener("DOMContentLoaded", function() {
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.5, // Adjust as needed
+  };
+
+  const observer = new IntersectionObserver(handleIntersect, observerOptions);
+
+  document.querySelectorAll('.timeline li').forEach(function(item) {
+    observer.observe(item);
+  });
+
+  function handleIntersect(entries, observer) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        entry.target.classList.remove('fade-out');
+      } else {
+        entry.target.classList.add('fade-out');
+        entry.target.classList.remove('fade-in');
+      }
+    });
+  }
 });
