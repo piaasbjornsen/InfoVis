@@ -2,7 +2,7 @@
   // set the dimensions and margins of the graph
   var containerDivCasualties = d3.select("#cause_of_death_div");
 
-  var margin = { top: 50, right: 50, bottom: 190, left: 200 };
+  var margin = { top: 50, right: 50, bottom: 200, left: 200 };
   var aspectRatioCasualties = 2 / 3; // You can adjust this ratio based on your preference
 
   var width = containerDivCasualties.node().getBoundingClientRect().width - margin.left - margin.right;;
