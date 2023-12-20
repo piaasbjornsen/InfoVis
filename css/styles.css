@@ -11622,7 +11622,7 @@ background-size: cover;
   padding-top: 5vw;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: 900; 
-  color: rgb(5, 20, 114);
+  color: #000000;
 }
 
 
@@ -11680,10 +11680,10 @@ background-size: cover;
   display: inline;
   position: relative;
   top: 50%;  
-  width: 24em;
+  width: fit-content;
   margin: 0 auto;
   border-right: 2px solid rgba(255,255,255,.75);
-  font-size: 180%;
+  font-size: 2.5vw;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -11697,12 +11697,14 @@ animation: typewriter 4s steps(44) 1s 1 normal both,
 }
 @keyframes typewriter{
 from{width: 0;}
-to{width: 24em;}
+to{width: 100%;}
 }
 @keyframes blinkTextCursor{
 from{border-right-color: rgba(255,255,255,.75);}
 to{border-right-color: transparent;}
 }
+
+
 
 
 

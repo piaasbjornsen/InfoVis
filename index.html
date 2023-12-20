@@ -21,7 +21,7 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="js/scripts.js"></script>
-  <script src="https://d3js.org/d3.v4.js"></script>
+  <!-- <script src="https://d3js.org/d3.v4.js"></script> -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
@@ -64,9 +64,9 @@
   <!-- What is terrorism-->
   <section class="terrorism-section text-center">
     <div class="container d-flex flex-column align-items-center justify-content-center">
-      <div class="typewriter">
-        <h1 class="mb-3 line-1 anim-typewriter" style="color:#F4EBD9; display: inline-block;">First, we need to know
-          what terrorism is</h1>
+      <div>
+      <h1 class="mb-3 line-1 anim-typewriter" style="color:#F4EBD9; display: inline-block !important;">First we need to understand
+          what we mean by terrorism</h1>
       </div>
       <h2 class="mb-3 text-white">
         Many of us have strong associations to the word 'terrorism', evoking thoughts of violence,
@@ -76,11 +76,7 @@
       <h3 class="highlight-effect" style="background-color: rgba(53, 33, 33, 0.8); padding: 2vw;">
         Let's look at some <span class="text-to-be pr-1">definitions</span>
       </h3>
-      <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" style="enable-background:new 0 0 128 128;  width: 150px; height: 150px; margin-top: 3rem;"
-      xml:space="preserve">
-      <path style="fill:#191919"
-        d="M20.989 65.979C9.417 65.979 0 75.395 0 86.968c0 11.572 9.417 20.989 20.989 20.989H128v-7.067h-2.102c-5.353-12.791-2.738-22.597-.283-27.844H128v-7.067H20.989zm0 7.067h100.757a34.994 34.994 0 0 0-1.661 5.3H10.07a13.848 13.848 0 0 1 10.919-5.3zm-12.95 8.833h111.446a31.923 31.923 0 0 0-.247 3.533H7.155c.142-1.236.442-2.42.884-3.533zm-.831 7.067h112.117c.088 1.131.23 2.314.424 3.533H8.215a13.329 13.329 0 0 1-1.007-3.533zm13.781 11.943c-4.24 0-8.021-1.89-10.583-4.876h110.103a46.946 46.946 0 0 0 1.572 4.876H20.989zm78.955-80.845H10.6v7.067h3.304c5.424 12.667 3.039 22.455.636 27.844H10.6v7.067h89.344c11.572 0 20.989-9.417 20.989-20.989 0-11.573-9.417-20.989-20.989-20.989zm0 7.067c4.417 0 8.357 2.067 10.918 5.3H19.469a47.478 47.478 0 0 0-1.749-5.3h82.224zm0 27.843h-81.57a34.775 34.775 0 0 0 1.502-4.876h90.651a13.92 13.92 0 0 1-10.583 4.876zm12.774-8.409H20.477c.141-1.131.23-2.297.247-3.533h93.001a13.35 13.35 0 0 1-1.007 3.533zm-92.083-7.067a44.539 44.539 0 0 0-.424-3.533h92.683c.442 1.113.742 2.297.883 3.533H20.635z" />
-    </svg> -->
+  
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"
         style="enable-background:new 0 0 128 128; width: 12vw; height: 12vw; margin-top: 2rem;" xml:space="preserve">
         <path style="fill:#F4EBD9"
@@ -154,7 +150,7 @@
 
   <!-- New section -->
   <section class="casualties-per-year-section">
-    <div style="width: 100vw;">
+    <div id="typewriter-container" style="width: 100vw;">
       <h3 style="color: #140502B3; padding: 1rem; ">
         Now that know a little more about what terrorism means, lets have a look at how widespread it is, and has been
         throughout the years
@@ -167,7 +163,7 @@
   <!-- Footer-->
   <footer class="footer bg-black small text-center text-white-50">
     <div class="container px-4 px-lg-5">
-      Copyright &copy; Your Website 2023
+      Copyright &copy; Your Website 
     </div>
   </footer>
   <!-- Bootstrap core JS-->

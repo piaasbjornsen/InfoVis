@@ -40,8 +40,12 @@ $(document).on("scroll", function() {
   };
   
   
-// Typewriter in view
-function isElementInViewport(el) {
+  function isElementInViewport(el) {
+    // Check if the element is null or undefined
+    if (!el) {
+      return false;
+    }
+  
     var rect = el.getBoundingClientRect();
     return (
       rect.top >= 0 &&
@@ -51,19 +55,7 @@ function isElementInViewport(el) {
     );
   }
   
-  function handleScroll() {
-    var element = document.querySelector('.line-1');
-  
-    if (isElementInViewport(element)) {
-      element.classList.add('visible');
-      window.removeEventListener('scroll', handleScroll);
-    }
-  }
-  
-  window.addEventListener('scroll', handleScroll);
-  
-  handleScroll(); // Initial check on page load
-  
+ 
   
 // Highlight
 document.addEventListener("DOMContentLoaded", function () {
@@ -90,14 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Function to scroll to the center of the section
-    function scrollToCenter() {
-      const section = document.getElementById('centerSection');
-      section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    // Attach the function to the window's scroll event
-    window.addEventListener('scroll', scrollToCenter);
 
 
     $(function() {
@@ -106,3 +90,34 @@ document.addEventListener("DOMContentLoaded", function () {
           $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
         });
       });
+
+
+
+// Used in:
+// typewriter
+document.addEventListener("DOMContentLoaded", function () {
+  var observer = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        // Your D3.js code for the typewriter animation
+        var text = d3.select(".anim-typewriter");
+
+        text.transition()
+          .duration(4000) // Adjust the duration based on your preference
+          .tween("text", function () {
+            var content = "First we need to understand what we mean by terrorism";
+            var i = d3.interpolateString("", content);
+
+            return function (t) {
+              text.text(i(t));
+            };
+          });
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  var typewriterElement = document.querySelector(".anim-typewriter");
+  observer.observe(typewriterElement);
+});
