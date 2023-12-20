@@ -45,7 +45,6 @@ d3.csv("assets/csv/out_dis.csv").then(function (data) {
       .attr("transform", "translate(-10,0)rotate(-45)")
       .style("text-anchor", "end")
       .style("fill", function(d, i) {
-        console.log(d,i)
         return i === 27 ? "red": "black";       // To hightlight column 27
 
       });
@@ -116,7 +115,6 @@ d3.csv("assets/csv/out_dis.csv").then(function (data) {
       return height - y(d.Deaths);
     })
     .delay(function (d, i) {
-      console.log(i);
       return i * 100;
     });
 });
