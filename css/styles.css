@@ -11681,15 +11681,22 @@ to{border-right-color: transparent;}
   padding: 5vw 5vw; /* Adjust padding as needed */
   margin: 0; /* Remove margin */
   width: 100vw;
-  height: auto;
-  text-align: center;
+  height: 200vh;
   background-color:#F4EBD9  ;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  position: relative;
 }
 
+
+.sticky-element {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff; /* Adjust as needed */
+  padding-top: 5vh;
+}
+
+.content {
+  margin-top: 100vh; /* Add margin to simulate scrolling content */
+}
 
 /* #my_dataviz {
   width: 100%;
