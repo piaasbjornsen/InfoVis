@@ -60,8 +60,8 @@ import re
 # code_attacks.rename(columns={1 :'attack_count'}, inplace=True )
 # code_attacks.to_csv("code_attacks.csv")
 
-df1 = pd.read_csv(r'globalterrorismdb.csv')
-df2= pd.read_csv(r'globalterrorismdb_2021Jan-June_1222dist.csv')
+# df1 = pd.read_csv(r'globalterrorismdb.csv')
+# df2= pd.read_csv(r'globalterrorismdb_2021Jan-June_1222dist.csv')
 
 # filtered_df1= df1.loc[(df1['iyear'])>=2011]
 # filtered_df1=filtered_df1[['iyear','country_txt','gname']]
@@ -260,3 +260,33 @@ df2= pd.read_csv(r'globalterrorismdb_2021Jan-June_1222dist.csv')
 # df1 = pd.read_csv(r'2021_gcountry.csv')
 # filtered_df = df1.loc[df1["country_txt"].isin(["Iraq", "Afghanistan","Pakistan","India","Yemen","Nigeria","Philippines","Somalia","Syria","Thailand"])]
 # filtered_df.to_csv('2021_gcountry.csv',index=False)
+
+
+df1 = pd.read_csv(r'2021_gcountry.csv')
+df1= df1[['gname','country_txt','count']]
+df1.replace({
+    'gname': {
+        'Taliban':   '{"source": 11,',
+         'Unknown':  '{"source":12,',
+         'Maoists':  '{"source":13,',
+         'Al-Qaida in the Arabian Peninsula (AQAP)': '{"source":16,',
+         'Al-Shabaab':'{"source":15,',
+         'Boko Haram':'{"source":14,',
+         'Islamic State of Iraq and the Levant (ISIL)':'{"source":17,',
+         'Houthi extremists (Ansar Allah)': '{"source":18,'   
+    },
+    'country_txt':{
+        'Afghanistan':'"target":20,',
+        'Pakistan':'"target":21,',
+        'India':'"target":22,',
+        'Iraq':'"target":19,',
+        'Nigeria':'"target":24,',
+        'Philippines': '"target":25,',
+        'Yemen':'"target":23,',
+        'Somalia':'"target":26,',
+        'Thailand':'"target":28,',
+        'Syria':'"target":27,'
+    }
+},inplace=True)
+df1['count'] = '"value":' + df1['count'].astype(str) + '},'
+print(df1)
