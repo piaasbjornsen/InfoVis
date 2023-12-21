@@ -17,7 +17,7 @@ let centered, world;
 const projection = d3
 	.geoRobinson()
 	.scale(130)
-	.translate([containerWidth / 2, (containerWidth * 0.625) / 2]); // Adjust translate based on aspect ratio
+	.translate([containerWidth / 2, containerWidth / 2]); // Adjust translate based on aspect ratio
 
 const path = d3.geoPath().projection(projection);
 
@@ -212,7 +212,7 @@ function click(d) {
 	world.selectAll("path")
 		.classed("active", function (country) { return centered && country === centered; });
 
-	// // Apply the translation and scale with transition
+	// Apply the translation and scale with transition
 	// world.transition()
 	// 	.duration(750)
 	// 	.attr("transform", "translate(" + x + "," + y + ") scale(" + k + ")");
