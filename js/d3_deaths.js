@@ -1,17 +1,18 @@
 
   // set the dimensions and margins of the graph
-  var containerDivCasualties = d3.select("#cause_of_death_div");
+  var containerDiv = d3.select("#cause_of_death_div");
 
   var margin = { top: 50, right: 50, bottom: 260, left: 200 };
-  var aspectRatioCasualties = 2 / 3; // You can adjust this ratio based on your preference
+  var aspectRatio = 2 / 4; // You can adjust this ratio based on your preference
 
-  var width = containerDivCasualties.node().getBoundingClientRect().width - margin.left - margin.right;;
-  var height = width * aspectRatioCasualties - margin.top - margin.bottom;
+  var width = containerDiv.node().getBoundingClientRect().width - margin.left - margin.right;;
+  var height = containerDiv.node().getBoundingClientRect().width * aspectRatio - margin.bottom - margin.top;
+
   
   // append the svg object to the body of the page
-  var svg = containerDivCasualties
+  var svg = containerDiv
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
+    .attr("width", containerDiv.node().getBoundingClientRect().width)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -45,7 +46,7 @@
 
     // Interactive bar
     // create a tooltip
-    var Tooltip = containerDivCasualties
+    var Tooltip = containerDiv
       .append("div")
       .style("opacity", 0)
       .attr("class", "tooltip")
@@ -59,24 +60,25 @@
     var mouseover = function (d) {
       Tooltip.style("opacity", 1);
     };
+    
     var mousemove = function (event) {
       var d = event.target.__data__; // Accessing the data associated with the element
-  
+    
       if (d) {
-          console.log("Data associated with the element: ", d);
-  
-          Tooltip.html("Number of deaths: " + d.Deaths)
-              .style("left", (d3.mouse(this)[0] + 70) + "px")
-              .style("top", (d3.mouse(this)[1]) + "px");
+        console.log("Data associated with the element: ", d);
+    
+        Tooltip.html("Number of deaths: " + d.Deaths)
+          .style("left", event.pageX + "px")  // Adjust the left position
+          .style("top", (event.pageY - 30) + "px");  // Adjust the top position
       } else {
-          console.log("No data associated with the element");
+        console.log("No data associated with the element");
       }
-  };
-  
+    };
+    
     var mouseleave = function (d) {
       Tooltip.style("opacity", 0);
     };
-
+    
     // Bars
     svg.selectAll("mybar")
       .data(data)
