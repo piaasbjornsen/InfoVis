@@ -11736,10 +11736,15 @@ div.tooltip {
   /* pointer-evens: all; */
 }
 
-.world {
+.worldmap-svg {
   transform-origin: center;
 }
 
 .myCircle:hover {
   stroke: black;
+}
+
+#worldmap-svg {
+  width: 100%; /* Use 100% width */
+  height: auto; /* Maintain aspect ratio */
 }
