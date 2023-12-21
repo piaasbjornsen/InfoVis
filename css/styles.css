@@ -11686,12 +11686,13 @@ to{border-right-color: transparent;}
 }
 
 
-/* #my_dataviz {
-  width: 100%;
+.worldmap-section{
+  padding: 5vw 5vw; /* Adjust padding as needed */
+  margin: 0; /* Remove margin */
+  width: 100vw;
   height: auto;
-  padding-bottom: 50%; /* Adjust this as needed 
-  position: relative;
-} */
+  background-color:#F4EBD9 ;
+}
 
 .footer {
   padding: 5rem 0;
