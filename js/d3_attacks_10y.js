@@ -2,10 +2,10 @@
 var containerAttacks = d3.select("#attacks-10yr-div");
 // set the dimensions and margins of the graph
 var marginA = { top: 100, right: 60, bottom: 60, left: 60 },
-    widthA = containerDiv.node().getBoundingClientRect().width - marginA.left - marginA.right,
-    heightA = containerDiv.node().getBoundingClientRect().width * aspectRatio - marginA.bottom - marginA.top,
+    widthA = containerAttacks.node().getBoundingClientRect().width - marginA.left - marginA.right,
+    heightA = widthA - marginA.bottom - marginA.top,
     innerRadius = 90,
-    outerRadius = Math.min(widthA, heightA) / 2;   // the outerRadius goes from the middle of the SVG area to the border
+    outerRadius = Math.min(widthA, heightA) / 4;   // the outerRadius goes from the middle of the SVG area to the border
 
 // append the svg object
 var svgAttack = containerAttacks
@@ -43,20 +43,23 @@ d3.csv("assets/csv/attacks_by_country_10y.csv").then(function(data) {
     .style("position", "absolute")
 
   // Three function that change the tooltip when user hover / move / leave a cell
-  var mouseover = function (d) {
-    Tooltip
-      .style("opacity", 1)
-  }
-  var mousemove = function (d) {
-    Tooltip
+  var mouseover = function(event, d) {
+    console.log("Mouseover triggered", d);
+    Tooltip.style("opacity", 1);
+}
+
+
+var mousemove = function(event, d) {
+  console.log("Mousemove triggered", d);
+  Tooltip
       .html("Number of incidents: " + d['Attack_Count'])
-      .style("left", (d3.mouse(this)[0] + 100) + "px")
-      .style("top", (d3.mouse(this)[1] + 350) + "px")
-  }
-  var mouseleave = function (d) {
-    Tooltip
-      .style("opacity", 0)
-  }
+      .style("left", (event.pageX + 100) + "px")
+        .style("top", (event.pageY + 350) + "px");
+}
+
+var mouseleave = function(event, d) {
+    Tooltip.style("opacity", 0);
+}
 
   // Add the bars
   svgAttack.append("g")

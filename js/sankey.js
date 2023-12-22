@@ -15,7 +15,7 @@ var sankey = d3.sankey()
     .nodePadding(10)
     .size([width, height]);
 
-d3.json("sankey-data.json", function(error, graph) {
+d3.json("assets/sankey-data.json").then(function(graph) {
     sankey
         .nodes(graph.nodes)
         .links(graph.links)
@@ -88,5 +88,6 @@ d3.json("sankey-data.json", function(error, graph) {
         .append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
-});
-
+    }).catch(function(error) {
+        console.log(error);
+    });

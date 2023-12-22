@@ -11731,20 +11731,16 @@ div.tooltip {
   box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
-.background {
-  fill: transparent;
-  /* pointer-evens: all; */
-}
-
-.worldmap-svg {
-  transform-origin: center;
-}
-
 .myCircle:hover {
   stroke: black;
 }
 
-#worldmap-svg {
-  width: 100%; /* Use 100% width */
-  height: auto; /* Maintain aspect ratio */
+
+.sankey-section {
+  padding: 5vw 5vw; /* Adjust padding as needed */
+  margin: 0; /* Remove margin */
+  width: 100vw;
+  height: auto;
+  background-color:#F4EBD9 ;
+
 }
