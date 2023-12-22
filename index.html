@@ -27,6 +27,8 @@
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
   <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/sankey.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
 
 </head>
 
@@ -172,27 +174,41 @@
       <li style="--accent-color:#F4EBD9">
         <div class="date" style="color: black;">1984</div>
         <!-- <div class="title" style="color: #F4EBD9;">9/11 - New York</div> -->
-        <div class="descr" style="color: #F4EBD9;">The first peak to be observed occured in 1984 as the global landscape in 1984 witnessed various acts of terrorism across different regions and conflicts leading to a number of casualties still relatively low (below 20k).</div>
+        <div class="descr" style="color: #F4EBD9;">The first peak to be observed occured in 1984 as the global landscape
+          in 1984 witnessed various acts of terrorism across different regions and conflicts leading to a number of
+          casualties still relatively low (below 20k).</div>
       </li>
       <li style="--accent-color:#F4EBD9">
         <div class="date" style="color: black;">1992</div>
         <!-- <div class="title" style="color: #F4EBD9;">Place (pseudonym for the attack)</div> -->
-        <div class="descr" style="color: #F4EBD9;">The year 1992 there was a peak of casualties again following by years 1995 and 1997 with similar casualties number. It included bombinhg in the Israeli embassies in Buenos Aires and and London as well as the bombing of the Gold Mohur Hotel in Aden</div>
+        <div class="descr" style="color: #F4EBD9;">The year 1992 there was a peak of casualties again following by years
+          1995 and 1997 with similar casualties number. It included bombinhg in the Israeli embassies in Buenos Aires
+          and and London as well as the bombing of the Gold Mohur Hotel in Aden</div>
       </li>
       <li style="--accent-color:#F4EBD9">
         <div class="date" style="color: black;">2001</div>
         <div class="title" style="color: #F4EBD9;">9/11 - New York</div>
-        <div class="descr" style="color: #F4EBD9;">One of the most pivotal and tragic moments in contemporary history is the events on September 11,2001 commonly referred to as 9/11, were a series of coordinated terrorist attacks carried out by the extremist group al-Qaeda in the United States. This events is clearly depicted and contributed to the peak in 2001 in the above graph since it resulted to several casualties.</div>
+        <div class="descr" style="color: #F4EBD9;">One of the most pivotal and tragic moments in contemporary history is
+          the events on September 11,2001 commonly referred to as 9/11, were a series of coordinated terrorist attacks
+          carried out by the extremist group al-Qaeda in the United States. This events is clearly depicted and
+          contributed to the peak in 2001 in the above graph since it resulted to several casualties.</div>
       </li>
       <li style="--accent-color:#F4EBD9">
         <div class="date" style="color: black;">2007</div>
         <!-- <div class="title" style="color: #F4EBD9;">Place (pseudonym for the attack)</div> -->
-        <div class="descr" style="color: #F4EBD9;">Several terrorist attacks occured as well in the year 2007 mostly in Iraq,Pakistan, Algeria and Afghanistan, which corresponds do the increased number of casualties.</div>
+        <div class="descr" style="color: #F4EBD9;">Several terrorist attacks occured as well in the year 2007 mostly in
+          Iraq,Pakistan, Algeria and Afghanistan, which corresponds do the increased number of casualties.</div>
       </li>
       <li style="--accent-color:#F4EBD9">
         <div class="date" style="color: black;">2015</div>
         <div class="title" style="color: #F4EBD9;">Attentats du 13-Novembre</div>
-        <div class="descr" style="color: #F4EBD9;">The biggest peak in the last 3 decades occured in 2015, which can be explained by the series of coordinated terrorist attacks that occurred in Paris, France, on November 13, 2015.Multiple locations across the city were targeted by gunmen and suicide bombers, resulting in a tragic loss of life and leaving many others injured. The attackers targeted a concert hall, a soccer stadium, and several restaurants and bars.The "Attentats du 13-Novembre" had a profound impact on France and the international community, prompting heightened security measures and a collective response against terrorism.</div>
+        <div class="descr" style="color: #F4EBD9;">The biggest peak in the last 3 decades occured in 2015, which can be
+          explained by the series of coordinated terrorist attacks that occurred in Paris, France, on November 13,
+          2015.Multiple locations across the city were targeted by gunmen and suicide bombers, resulting in a tragic
+          loss of life and leaving many others injured. The attackers targeted a concert hall, a soccer stadium, and
+          several restaurants and bars.The "Attentats du 13-Novembre" had a profound impact on France and the
+          international community, prompting heightened security measures and a collective response against terrorism.
+        </div>
       </li>
     </ul>
   </section>
@@ -204,11 +220,11 @@
     <div class="container d-flex flex-column align-items-center">
       <h1 style="font-family: 'Courier New', Courier, monospace; text-transform: uppercase;">Deathly?</h1>
       <h1>Compared to other death causes, how common is terrorism?</h1>
-      <div id="cause_of_death_div" style="width: 90vw;"></div>
+      <div id="cause_of_death_div" style="width: 70vw;"></div>
       <h1> As we can see from the chart, curing for example Malaria would save more lives then ending terrorism </h1>
     </div>
   </section>
-  
+
   <section class="worldmap-section">
     <div class=" d-flex flex-column align-items-center">
       <h2> And just like malaria, terrorism is more common some places then others, so lets look at the map </h2>
@@ -218,11 +234,18 @@
 
   <section class="attacks-section">
     <div class="container d-flex flex-column align-items-center">
-        <h1 style="font-family: 'Courier New', Courier, monospace; text-transform: uppercase;">Top 10 countries attacked</h1>
-        <div id="attacks-10yr-div" style="width: 90vw;"></div>
-      </div>
+      <h1 style="font-family: 'Courier New', Courier, monospace; text-transform: uppercase;">Top 10 countries attacked
+      </h1>
+      <div id="attacks-10yr-div" style="width: 90vw;"></div>
+    </div>
   </section>
-  
+
+  <section class="sankey-section">
+    <div class=" d-flex flex-column align-items-center">
+      <h1>Sankey</h1>
+      <div id="sankey-diagram"></div>
+    </div>
+  </section>
 
   <!-- Footer-->
   <footer class="footer bg-black small text-center text-white-50">
@@ -246,6 +269,7 @@
   <script src="js/d3_deaths.js" charset="utf-8"></script>
   <script src="js/worldmap.js" charset="utf-8"></script>
   <script src="js/d3_attacks_10y.js" charset="utf-8"></script>
+  <script src="js/sankey.js" charset="utf-8"></script>
 
 </body>
 
