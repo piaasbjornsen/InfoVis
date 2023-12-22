@@ -41,10 +41,13 @@ d3.json("assets/sankey-data.json")
         return b.dy - a.dy;
       })
       .on("mouseover", function (event, d) {
+        console.log("event", event)
+        console.log("d", d)
+
         d3.select(this).style("stroke-opacity", 0.5);
         tooltipSankey.transition().duration(200).style("opacity", 0.9);
         tooltipSankey
-          .html("Attacks: " + d.value + "<br/>Year: " + d.Year)
+          .html("Attacks: " + event.value + "<br/>Year: " + event.Year)
           .style("left", event.pageX + "px")
           .style("top", event.pageY - 28 + "px");
       })
