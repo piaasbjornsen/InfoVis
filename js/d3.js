@@ -39,11 +39,14 @@ d3.csv("assets/csv/number_terrorist_attacks_casualties_per_year.csv")
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain([0, d3.max(data, function (d) { return d.value; })])
-      .range([heightCasualties, 0]);
+  .domain([0, d3.max(data, function (d) { return d.value; })])
+  .range([heightCasualties, 0]);
+
     svgCasualties.append("g")
-      .call(d3.axisLeft(y))
-      .style("stroke", "white");
+  .call(d3.axisLeft(y).tickFormat(function(d){
+      return d === 0 ? "" : d; // Don't display the 0
+  }))
+  .style("stroke", "white");
 
       svgCasualties.append("path")
       .datum(data)
@@ -68,32 +71,24 @@ d3.csv("assets/csv/number_terrorist_attacks_casualties_per_year.csv")
       .style("position", "absolute");
     
     // Three functions that change the tooltip when the user hovers/moves/leaves a cell
-    var mouseoverCasualties = function (event) {
-      var d = event.target.__data__; // Accessing the data associated with the element
-    
-      if (d && d.value !== 0) {
+    var mouseoverCasualties = function (d) {
+      if (d.value !== 0) {
         TooltipCasualties
           .style("opacity", 1)
-          .html("Year : " + d.date.getFullYear() + "<br/>" + " Casualties : " + d.value);
-      } else {
-        TooltipCasualties.style("opacity", 0);
+          .html("Year: " + d.date.getFullYear() + "<br/>" + "Casualties: " + d.value);
       }
     };
     
-    var mousemoveCasualties = function (event) {
-      var d = event.target.__data__; // Accessing the data associated with the element
-    
-      if (d && d.value !== 0) {
-        TooltipCasualties
-          .html("Year : " + d.date.getFullYear() + "<br/>" + " Casualties : " + d.value)
-          .style("left", (event.pageX + 10) + "px")  // Set left position relative to mouse X
-          .style("top", (event.pageY - 10) + "px");  // Set top position relative to mouse Y
-      }
+    var mousemoveCasualties = function (d) {
+      TooltipCasualties
+        .style("left", (d3.event.pageX + 10) + "px")
+        .style("top", (d3.event.pageY - 10) + "px");
     };
     
     var mouseleaveCasualties = function () {
       TooltipCasualties.style("opacity", 0);
     };
+    
     
     // Add the points
     svgCasualties.selectAll("dot")

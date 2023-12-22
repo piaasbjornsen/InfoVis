@@ -57,25 +57,18 @@
       .style("padding", "5px");
 
     // Three function that change the tooltip when user hover / move / leave a cell
-    var mouseover = function (d) {
+    var mouseover = function(d) {
       Tooltip.style("opacity", 1);
     };
     
-    var mousemove = function (event) {
-      var d = event.target.__data__; // Accessing the data associated with the element
-    
-      if (d) {
-        console.log("Data associated with the element: ", d);
-    
-        Tooltip.html("Number of deaths: " + d.Deaths)
-          .style("left", event.pageX + "px")  // Adjust the left position
-          .style("top", (event.pageY - 30) + "px");  // Adjust the top position
-      } else {
-        console.log("No data associated with the element");
-      }
+    var mousemove = function(d) {
+      Tooltip
+        .html("Number of deaths: " + d.Deaths_m)
+        .style("left", (d3.event.pageX + 10) + "px")
+        .style("top", (d3.event.pageY - 50) + "px");
     };
     
-    var mouseleave = function (d) {
+    var mouseleave = function(d) {
       Tooltip.style("opacity", 0);
     };
     

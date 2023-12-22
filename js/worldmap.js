@@ -54,34 +54,35 @@ function ready(error, topo, attackData) {
 		feature.total = attackDataMap.get(feature.id) || 0;
 	});
 
-	let mouseOver = function (event, d) {
+	let mouseOver = function (d) {
 		d3.selectAll(".Country")
-			.transition()
-			.duration(200)
-			.style("opacity", .5)
-			.style("stroke", "transparent");
+		  .transition()
+		  .duration(200)
+		  .style("opacity", .5)
+		  .style("stroke", "transparent");
 		d3.select(this)
-			.transition()
-			.duration(200)
-			.style("opacity", 1)
-			.style("stroke", "black");
+		  .transition()
+		  .duration(200)
+		  .style("opacity", 1)
+		  .style("stroke", "black");
 		tooltip
-			.style("left", (event.pageX + 15) + "px")
-			.style("top", (event.pageY - 28) + "px")
-			.transition().duration(400)
-			.style("opacity", 1)
-			.text(d.properties.name + ': ' + d.total);
-	};
-
-	let mouseLeave = function () {
+		  .style("left", (d3.event.pageX + 15) + "px")
+		  .style("top", (d3.event.pageY - 28) + "px")
+		  .transition().duration(400)
+		  .style("opacity", 1)
+		  .text(d.properties.name + ': ' + d.total);
+	  };
+	  
+	  let mouseLeave = function () {
 		d3.selectAll(".Country")
-			.transition()
-			.duration(200)
-			.style("opacity", 1)
-			.style("stroke", "transparent");
+		  .transition()
+		  .duration(200)
+		  .style("opacity", 1)
+		  .style("stroke", "transparent");
 		tooltip.transition().duration(300)
-			.style("opacity", 0);
-	};
+		  .style("opacity", 0);
+	  };
+	  
 
 	// Draw the map
 	let world = svgMap.append("g").attr("class", "world");
