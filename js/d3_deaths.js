@@ -67,7 +67,7 @@
       if (d) {
         console.log("Data associated with the element: ", d);
     
-        Tooltip.html("Number of deaths: " + d.Deaths)
+        Tooltip.html("Number of deaths: " + d.Deaths_m)
           .style("left", event.pageX + "px")  // Adjust the left position
           .style("top", (event.pageY - 30) + "px");  // Adjust the top position
       } else {
