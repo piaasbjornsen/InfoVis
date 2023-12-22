@@ -1,8 +1,7 @@
-# InfoVis
+# How to run the program
+1. Locate the index.html File: In your project directory, find the index.html file.
+2. Launch the Live Server: Right-click on the index.html file and select 'Go Live' to start the server. (See Figure 1 for reference)
 
-## British media coverage
-https://cfmm.org.uk/wp-content/uploads/2020/08/CfMM-How-British-Media-Reports-Terrorism-ONLINE.pdf
+or 
 
-
-## CNN news coverage 
-https://www.kaggle.com/datasets/hadasu92/cnn-articles-after-basic-cleaning
+1. Go directly from this link: https://piaasbjornsen.github.io/InfoVis/
