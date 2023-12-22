@@ -36,6 +36,8 @@ var link = svg.append("g")
     .style("stroke-width", function(d) { return Math.max(1, d.dy); })
     .sort(function(a, b) { return b.dy - a.dy; })
     .on("mouseover", function(event, d) { 
+        d3.select(this)
+              .style("stroke-opacity", 0.5);
         tooltipSankey.transition()
             .duration(200)
             .style("opacity", .9);
@@ -44,6 +46,7 @@ var link = svg.append("g")
             .style("top", (event.pageY - 28) + "px");
     })
     .on("mouseout", function(d) {
+        d3.select(this).style("stroke-opacity", 0.2);
         tooltipSankey.transition()
             .duration(500)
             .style("opacity", 0);
