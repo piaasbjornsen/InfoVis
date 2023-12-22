@@ -11750,7 +11750,9 @@ div.tooltip {
   stroke-opacity: 0.2;
 }
 
-
+.link:hover {
+  stroke-opacity: .5;
+}
 
 .sankey-section .sankey-node rect {
   cursor: move;
@@ -11762,22 +11764,6 @@ div.tooltip {
   pointer-events: none;
   text-shadow: 0 1px 0 #fff;
 }
-
-/* .sankey-section .sankey-tooltip {
-  position: absolute;
-  text-align: center;
-  padding: 8px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 8px;
-  pointer-events: none;
-  opacity: 0;
-} */
-
-
-
-
 
 .sankey-section .sankey-tooltip {   
   position: absolute;
