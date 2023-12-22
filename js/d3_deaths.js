@@ -2,33 +2,33 @@
   // set the dimensions and margins of the graph
   var containerDiv = d3.select("#cause_of_death_div");
 
-  var margin = { top: 50, right: 50, bottom: 260, left: 200 };
-  var aspectRatio = 2 / 4; // You can adjust this ratio based on your preference
+  var marginD= { top: 50, right: 50, bottom: 260, left: 200 };
+  var aspectRatioD = 2 / 3; // You can adjust this ratio based on your preference
 
-  var width = containerDiv.node().getBoundingClientRect().width - margin.left - margin.right;;
-  var height = containerDiv.node().getBoundingClientRect().width * aspectRatio - margin.bottom - margin.top;
+  var widthD = containerDiv.node().getBoundingClientRect().width - marginD.left - marginD.right;;
+  var heightD = containerDiv.node().getBoundingClientRect().width * aspectRatioD - marginD.bottom - marginD.top;
 
   
   // append the svg object to the body of the page
-  var svg = containerDiv
+  var svgD = containerDiv
     .append("svg")
     .attr("width", containerDiv.node().getBoundingClientRect().width)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", heightD + marginD.top + marginD.bottom)
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + marginD.left + "," + marginD.top + ")");
 
    
   // Parse the Data
   d3.csv("assets/csv/out_dis.csv").then(function (data) {
     // X axis
     var x = d3.scaleBand()
-      .range([0, width])
+      .range([0, widthD])
       .domain(data.map(function (d) { return d.Diseases; }))
       .padding(0.2);
 
-      svg
+      svgD
       .append("g")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + heightD + ")")
       .call(d3.axisBottom(x))
       .selectAll("text")
         .attr("transform", "translate(-10,0)rotate(-45)")
@@ -40,8 +40,8 @@
     // Add Y axis
     var y = d3.scaleLinear()
       .domain([0, 2700000000])
-      .range([height, 0]);
-    svg.append("g")
+      .range([heightD, 0]);
+    svgD.append("g")
       .call(d3.axisLeft(y));
 
     // Interactive bar
@@ -80,7 +80,7 @@
     };
     
     // Bars
-    svg.selectAll("mybar")
+    svgD.selectAll("mybar")
       .data(data)
       .enter()
       .append("rect")
@@ -91,14 +91,14 @@
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
       .on("mouseleave", mouseleave)
-      .attr("height", function (d) { return height - y(0); }) // always equal to 0
+      .attr("height", function (d) { return heightD - y(0); }) // always equal to 0
       .attr("y", function (d) { return y(0); });
 
     // Animation
-    svg.selectAll("rect")
+    svgD.selectAll("rect")
       .transition()
       .duration(800)
       .attr("y", function (d) { return y(d.Deaths); })
-      .attr("height", function (d) { return height - y(d.Deaths); })
+      .attr("height", function (d) { return heightD - y(d.Deaths); })
       .delay(function (d, i) { return (i * 100); });
   });
