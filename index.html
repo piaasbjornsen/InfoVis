@@ -17,287 +17,260 @@
     rel="stylesheet" />
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="css/styles.css" rel="stylesheet" />
+  <link href="css/timeline.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="js/scripts.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+  <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/sankey.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
+
 </head>
 
 <body id="page-top">
   <!-- Masthead-->
   <header class="masthead">
-    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-      <div class="d-flex justify-content-center ">
-        <div class="text-center">
-          <div class="first-fade-in fade">
-            <h1 class="mx-auto my-0 text-uppercase" style="font-family: serif">
-              Unmasking terrorism
-            </h1>
-          </div>
-          <div class="second-fade-in fade">
-            <h2 class="text-white-50 mx-auto mt-4"
-              style="font-family: serif; background-color: rgba(53, 33, 33, 0.7); padding: 10px;">
-              Beyond the headlines
-            </h2>
-          </div>
-          <div class="third-fade-in fade">
-            <div class="">
-              <img class="img-fluid zoom" src="assets/img/911.webp" alt="..."
-                style="width: 20%; height: auto; z-index: 0; padding-top: 3rem;" />
-              <img class="img-fluid zoom" src="assets/img/paris.png" alt="..."
-                style="width: 15%; height: auto; z-index: 0;  padding-top: 3cap" />
-              <img class="img-fluid zoom" src="assets/img/uk.jpeg" alt="..."
-                style="width: 20%; height: auto; z-index: 0;  padding-top: 3rem" />
-            </div>
-            <!-- <h3 class="text-white mx-auto mt-5 mb-2" style="font-family: serif; border-top: 1px solid #ccc;">
-              Terrorism is a war where the front lines are within the depths
-              of our minds. Media outlets flood our screens and front pages
-              with alarming stories. But how deadly is terrorism, truly?
-            </h3> -->
-          </div>
-         <div class="tag scroll-reveal" style="padding-top: 5rem; padding-bottom: 7rem;">
-            <h3 class="text-white mx-auto mt-5 mb-2" style="font-family: serif; border-top: 2px solid #ccc;">
-            Terrorism is a war where the front lines are within the depths
-            of our minds. Media outlets flood our screens and front pages
-            with alarming stories, but how deadly is terrorism, truly?
-          </h3>
-          </div> 
-        </div>
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+      <div class="mb-3 mt-4 text-center">
+        <h1 class="text-uppercase first-fade-in fade"
+          style="font-family: serif; color: rgba(244, 235, 217, 1); font-size: 7vw;">
+          Unmasking terrorism
+        </h1>
+      </div>
+      <div class="mb-3 text-center second-fade-in fade">
+        <h2 class="text-white-50"
+          style="font-family: serif; background-color: rgba(53, 33, 33, 0.7); padding-left: 20px; padding-right: 20px; font-size: 2vw;">
+          Beyond the headlines
+        </h2>
+      </div>
+      <div class="mb-3 text-center third-fade-in fade">
+        <img class="img-fluid zoom" src="assets/img/911.webp" alt="..." style="width: 20%; height: auto; z-index: 0;" />
+        <img class="img-fluid zoom" src="assets/img/paris.png" alt="..."
+          style="width: 15%; height: auto; z-index: 0;" />
+        <img class="img-fluid zoom" src="assets/img/uk.jpeg" alt="..." style="width: 20%; height: auto; z-index: 0;" />
+      </div>
+      <div class="mb-3 tag scroll-reveal text-center">
+        <h3 class="mt-4"
+          style="font-family: serif; color: rgba(244, 235, 217, 1); border-top: 2px solid #F4EBD9; font-size: 1.5vw;">
+          Terrorism is a war where the front lines are within the depths
+          of our minds. Media outlets flood our screens and front pages
+          with alarming stories, but how deadly is terrorism truly?
+        </h3>
       </div>
     </div>
   </header>
+
+
   <!-- What is terrorism-->
-  <section class="about-section text-center" id="about">
-    <div class="container" style="padding-bottom: 2rem; ">
-      <h1 class="text-white line-1 anim-typewriter">First, we need to know what terrorism is </h1>
-      <h1 class="text-white-50"> Let look at some definitons of terrorism</h1>
-      <!-- <h1 class="text-white-50">
-        
-        
-        The united nations define terrorism as violence agains
-        sivilians with the attent of creating fear for political
-        influence. EUs definiton of terrorism 
-
-      
-      
-      
-        EU definition of terrorism
-        According to EU law, terrorist offences are acts committed with the aim of:
-        
-        seriously intimidating a population
-        unduly compelling a government or international organisation to perform or abstain from performing any act
-        seriously destabilising or destroying the fundamental political, constitutional, economic or social structures of a country or an international organisation</h1> -->
-    </div>
-    
-
-    <div class="row">
-      <div class="col-md-8" style="padding-left: 8rem; padding-right: 5rem;">
-        <!-- Content for the left column goes here -->
-        <img src="assets/img/chartDummy.png" class="img-fluid rounded" alt="...">
+  <section class="terrorism-section text-center">
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+      <div>
+        <h1 class="mb-3 line-1 anim-typewriter" style="color:#F4EBD9; display: inline-block !important;">First we need
+          to understand
+          what we mean by terrorism</h1>
       </div>
-      <div class="col-md-4" style="padding-right: 3rem;">
-        <!-- Content for the right column goes here -->
-        <div class="p-3">
-          <p>The united nations define terrorism as violence agains
-            sivilians with the attent of creating fear for political
-            influence..</p>
-        </div>
-      </div>
-    </div>
+      <h2 class="mb-3 text-white">
+        Many of us have strong associations to the word 'terrorism', evoking thoughts of violence,
+        tragedy, innocence lost, anger, and the complexity of politics and religion.
+        But what exactly is it, terrorism....
+      </h2>
+      <h3 class="highlight-effect" style="background-color: rgba(53, 33, 33, 0.8); padding: 2vw;">
+        Let's look at some <span class="text-to-be pr-1">definitions</span>
+      </h3>
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"
+        style="enable-background:new 0 0 128 128; width: 12vw; height: 12vw; margin-top: 2rem;" xml:space="preserve">
+        <path style="fill:#F4EBD9"
+          d="M55.211 83.321c-.129-.092-12.863-8.956-31.239-8.442a1.411 1.411 0 0 1-1.462-1.325v-.001a1.42 1.42 0 0 1 1.364-1.494c19.386-.57 32.415 8.565 32.976 8.965l-1.639 2.297zm0-9.985c-.129-.092-12.863-8.957-31.239-8.442a1.41 1.41 0 0 1-1.462-1.325 1.42 1.42 0 0 1 1.364-1.494c19.385-.561 32.414 8.565 32.975 8.964l-1.638 2.297zm0-9.984c-.129-.092-12.86-8.958-31.239-8.442a1.41 1.41 0 0 1-1.462-1.325 1.42 1.42 0 0 1 1.364-1.494c19.385-.564 32.415 8.564 32.975 8.964l-1.638 2.297zm0-9.986c-.129-.092-12.862-8.961-31.239-8.442a1.412 1.412 0 0 1-1.463-1.325 1.42 1.42 0 0 1 1.364-1.494c19.385-.566 32.415 8.565 32.975 8.964l-1.637 2.297zm0-9.985c-.129-.092-12.862-8.962-31.239-8.442a1.412 1.412 0 0 1-1.463-1.325 1.42 1.42 0 0 1 1.364-1.494c19.385-.568 32.415 8.565 32.976 8.964l-1.638 2.297zM71.825 83.32l-1.639-2.296c.561-.398 13.595-9.518 32.975-8.963a1.419 1.419 0 0 1 1.364 1.493v.001a1.411 1.411 0 0 1-1.462 1.325c-18.444-.519-31.11 8.348-31.238 8.44zm0-9.985-1.639-2.296c.561-.398 13.595-9.52 32.975-8.964a1.419 1.419 0 0 1 1.364 1.493 1.41 1.41 0 0 1-1.462 1.325c-18.412-.525-31.11 8.35-31.238 8.442zm-.001-9.983-1.638-2.297c.559-.399 13.586-9.533 32.976-8.964a1.418 1.418 0 0 1 1.363 1.493v.001a1.41 1.41 0 0 1-1.462 1.325c-18.392-.52-31.11 8.35-31.239 8.442zm.001-9.987-1.639-2.296c.561-.399 13.595-9.524 32.975-8.964a1.42 1.42 0 0 1 1.364 1.493 1.411 1.411 0 0 1-1.463 1.325c-18.443-.528-31.109 8.351-31.237 8.442zm0-9.985-1.639-2.296c.561-.399 13.595-9.513 32.975-8.963a1.417 1.417 0 0 1 1.364 1.493 1.41 1.41 0 0 1-1.462 1.325c-18.444-.524-31.11 8.35-31.238 8.441zm39.519-22.105v5.007h.014v-5.007h-.014zm4.245-.635v-3.484l-2.045-.07c-28.756-.945-45.807 10.027-49.939 13.06-4.132-3.018-21.169-13.99-49.939-13.06l-2.045.07v3.484H0v86.241h54.65c1.664 2.426 5.218 4.09 9.35 4.09s7.7-1.664 9.364-4.09H128V20.64h-12.411zM5.641 101.24V26.282h5.98v66.919l2.172-.07c.24 0 22.354-.465 40.377 8.109H5.641zm55.454-1.1C44.453 90.112 22.748 88.984 15.852 88.9V21.275c25.992-.367 41.703 9.745 45.243 12.284v66.581zm4.231.493V34.109l.028.028c.169-.141 16.303-13.172 45.99-12.862h.014V88.9c-7.009.098-29.292 1.241-46.032 11.733zm57.033.607H73.04c18.01-8.561 40.123-8.109 40.377-8.109l2.172.056V26.282h6.77v74.958z" />
+      </svg>
     </div>
   </section>
+
   <!-- Projects-->
-  <section class="about-section" id="projects">
-    <div class="container px-4 px-lg-5">
+  <section class="definition-section" id="projects">
+    <div class="" style="padding-left: 2vw; padding-right: 2vw;">
       <!-- Featured Project Row-->
-      <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-        <div class="col-xl-8 col-lg-7">
-          <img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="..." />
+      <!-- row 1 -->
+      <div class="row gx-0 mb-4 mb-lg-5 align-items-center" style="width: 100%; height: auto;">
+        <!-- <div class="col-xl-7 col-lg-6 offset-xl-1"> -->
+        <div class="col-7" style="padding-right: 2vw;">
+          <img src="assets/img/eu.png" alt="EU Flag" style="max-width:auto ; width: 100%;">
         </div>
-        <div class="col-xl-4 col-lg-5">
-          <div class="featured-text text-center text-lg-left">
-            <h4>Terror in media</h4>
-            <p class="text-black-50 mb-0">
-              Write an introduce statistics and data on terrorism in media
-            </p>
-          </div>
-        </div>
-      </div>
-      <!-- Project One Row-->
-      <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="assets/img/demo-image-01.jpg" alt="..." />
-        </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Fatality</h4>
-                <p class="mb-0 text-white-50">
-                  An example of where you can put an image of a project, or
-                  anything else, along with a description.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="col-5" style="text-align: left;">
+          <h4>European Union</h4>
+          <p class="text-black-50 mb-0">
+            According to EU law, terrorist offences are acts committed with the aim of:
+
+            seriously intimidating a population
+            unduly compelling a government or international organisation to perform or abstain from performing any act
+            seriously destabilising or destroying the fundamental political, constitutional, economic or social
+            structures of a country or an international organisation
+          </p>
         </div>
       </div>
-      <!-- Project Two Row-->
-      <div class="row gx-0 justify-content-center">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="assets/img/demo-image-02.jpg" alt="..." />
+      <!-- row 2 -->
+      <div class="row gx-0 mb-4 mb-lg-5 align-items-center" style="width: 100%; height: auto;">
+        <div class="col-7" style="padding: 2vw; text-align: right;">
+          <h4>The Netherlands</h4>
+          <p class="text-black-50 mb-0">
+            Terrorism involves crimes committed for ideological motives. Terrorists focus on preparing
+            or committing serious acts of violence. Typically, these acts aim to disrupt society with the
+            goal of bringing about societal changes, instilling serious fear in the population, or
+            influencing political decision-making. Terrorism and online hate speech manifest in various
+            forms on the internet. Radical and terrorist expressions can be made online, including texts
+            and videos that call for acts of violence.
+          </p>
         </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">Mountains</h4>
-                <p class="mb-0 text-white-50">
-                  Another example of a project with its respective
-                  description. These sections work well responsively as well!
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="col-5">
+          <img class="img-fluid" src="assets/img/nederland.jpg" alt="..." style="width: 100%; height: auto;" />
         </div>
       </div>
-    </div>
-  </section>
-  <section class="projects-section text-center tag" id="about">
-    <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-lg-8">
-          <h2 class="text-light my-0 mb-4 text-uppercase">War on terror</h2>
-          <p class="text-white-50">something about this</p>
+      <!-- row 3 -->
+      <div class="row gx-0 align-items-center" style="width: 100%; height: auto;">
+        <div class="col-3">
+          <img class="img-fluid" src="assets/img/fn.png" alt="..." style="width: 100%; height: auto; " />
         </div>
-      </div>
-      <img class="img-fluid" src="assets/img/ruins.jpg" alt="..." />
-    </div>
-  </section>
-  <!-- Signup-->
-  <section class="signup-section" id="signup">
-    <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5">
-        <div class="col-md-10 col-lg-8 mx-auto text-center">
-          <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-          <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
-          <!-- * * * * * * * * * * * * * * *-->
-          <!-- * * SB Forms Contact Form * *-->
-          <!-- * * * * * * * * * * * * * * *-->
-          <!-- This form is pre-integrated with SB Forms.-->
-          <!-- To make this form functional, sign up at-->
-          <!-- https://startbootstrap.com/solution/contact-forms-->
-          <!-- to get an API token!-->
-          <form class="form-signup" id="contactForm" data-sb-form-api-token="API_TOKEN">
-            <!-- Email address input-->
-            <div class="row input-group-newsletter">
-              <div class="col">
-                <input class="form-control" id="emailAddress" type="email" placeholder="Enter email address..."
-                  aria-label="Enter email address..." data-sb-validations="required,email" />
-              </div>
-              <div class="col-auto">
-                <button class="btn btn-primary disabled" id="submitButton" type="submit">
-                  Notify Me!
-                </button>
-              </div>
-            </div>
-            <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:required">
-              An email is required.
-            </div>
-            <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:email">
-              Email is not valid.
-            </div>
-            <!-- Submit success message-->
-            <!---->
-            <!-- This is what your users will see when the form-->
-            <!-- has successfully submitted-->
-            <div class="d-none" id="submitSuccessMessage">
-              <div class="text-center mb-3 mt-2 text-white">
-                <div class="fw-bolder">Form submission successful!</div>
-                To activate this form, sign up at
-                <br />
-                <a
-                  href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-              </div>
-            </div>
-            <!-- Submit error message-->
-            <!---->
-            <!-- This is what your users will see when there is-->
-            <!-- an error submitting the form-->
-            <div class="d-none" id="submitErrorMessage">
-              <div class="text-center text-danger mb-3 mt-2">
-                Error sending message!
-              </div>
-            </div>
-          </form>
+        <div class="col-4" style="padding: 2vw; text-align: left;">
+          <h4>United Nations</h4>
+          <p class="text-black-50 mb-0">
+            Terrorism is the use of violence against civilians to instill fear with the goal of political
+            influence.
+            Terrorism is an illegal method of violence and a form of violent extremism.
+          </p>
+        </div>
+        <div class="col-5">
+          <h3>The common thread in these definitions of terrorism is the use of violence or the threat of violence for
+            ideological purposes. Whether it's intimidating
+            a population, compelling a government or organization, or destabilizing fundamental structures, terrorism
+            involves actions aimed at creating fear,
+            influencing political decisions, and causing significant societal disruption.</h3>
         </div>
       </div>
     </div>
   </section>
-  <!-- Contact-->
-  <section class="contact-section bg-black">
-    <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5">
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Address</h4>
-              <hr class="my-4 mx-auto" />
-              <div class="small text-black-50">
-                4923 Market Street, Orlando FL
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-envelope text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Email</h4>
-              <hr class="my-4 mx-auto" />
-              <div class="small text-black-50">
-                <a href="#!">hello@yourdomain.com</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-mobile-alt text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Phone</h4>
-              <hr class="my-4 mx-auto" />
-              <div class="small text-black-50">+1 (555) 902-8832</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="social d-flex justify-content-center">
-        <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-        <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-        <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
-      </div>
+
+  <!-- New section -->
+  <section class="casualities-section">
+    <div id="typewriter-container" style="width: 100vw;">
+      <h3 style="color: white; font-size: 3vw; padding-top: 7vh; padding-bottom: 7vh;">
+        Now, let us have a look at how widespread it is, and has been throughout the years
+      </h3>
+    </div>
+    <div id="casualties-per-year-div" style="width: 70vw;">
+      <div id="casualties-per-year"></div>
+    </div>
     </div>
   </section>
+
+  <!-- New section -->
+  <section class="timeline">
+    <h1 style="color: #F4EBD9; padding-bottom: 5vh;">What are the peaks?</h1>
+    <ul>
+      <li style="--accent-color:#F4EBD9">
+        <div class="date" style="color: black;">1984</div>
+        <!-- <div class="title" style="color: #F4EBD9;">9/11 - New York</div> -->
+        <div class="descr" style="color: #F4EBD9;">The first peak to be observed occured in 1984 as the global landscape
+          in 1984 witnessed various acts of terrorism across different regions and conflicts leading to a number of
+          casualties still relatively low (below 20k).</div>
+      </li>
+      <li style="--accent-color:#F4EBD9">
+        <div class="date" style="color: black;">1992</div>
+        <!-- <div class="title" style="color: #F4EBD9;">Place (pseudonym for the attack)</div> -->
+        <div class="descr" style="color: #F4EBD9;">The year 1992 there was a peak of casualties again following by years
+          1995 and 1997 with similar casualties number. It included bombinhg in the Israeli embassies in Buenos Aires
+          and and London as well as the bombing of the Gold Mohur Hotel in Aden</div>
+      </li>
+      <li style="--accent-color:#F4EBD9">
+        <div class="date" style="color: black;">2001</div>
+        <div class="title" style="color: #F4EBD9;">9/11 - New York</div>
+        <div class="descr" style="color: #F4EBD9;">One of the most pivotal and tragic moments in contemporary history is
+          the events on September 11,2001 commonly referred to as 9/11, were a series of coordinated terrorist attacks
+          carried out by the extremist group al-Qaeda in the United States. This events is clearly depicted and
+          contributed to the peak in 2001 in the above graph since it resulted to several casualties.</div>
+      </li>
+      <li style="--accent-color:#F4EBD9">
+        <div class="date" style="color: black;">2007</div>
+        <!-- <div class="title" style="color: #F4EBD9;">Place (pseudonym for the attack)</div> -->
+        <div class="descr" style="color: #F4EBD9;">Several terrorist attacks occured as well in the year 2007 mostly in
+          Iraq,Pakistan, Algeria and Afghanistan, which corresponds do the increased number of casualties.</div>
+      </li>
+      <li style="--accent-color:#F4EBD9">
+        <div class="date" style="color: black;">2015</div>
+        <div class="title" style="color: #F4EBD9;">Attentats du 13-Novembre</div>
+        <div class="descr" style="color: #F4EBD9;">The biggest peak in the last 3 decades occured in 2015, which can be
+          explained by the series of coordinated terrorist attacks that occurred in Paris, France, on November 13,
+          2015.Multiple locations across the city were targeted by gunmen and suicide bombers, resulting in a tragic
+          loss of life and leaving many others injured. The attackers targeted a concert hall, a soccer stadium, and
+          several restaurants and bars.The "Attentats du 13-Novembre" had a profound impact on France and the
+          international community, prompting heightened security measures and a collective response against terrorism.
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- New Section -->
+  <!-- how common is it, causes absolute, en etter en relative -->
+  <!-- create pop up of this: As of my last knowledge update in January 2022, global traffic accident statistics can vary, and it's essential to check the most recent and reliable sources for the latest information. According to the World Health Organization (WHO) Global Status Report on Road Safety 2018, approximately 1.35 million people die each year due to road traffic accidents globally. -->
+  <section class="deaths-section">
+    <div class="container d-flex flex-column align-items-center">
+      <h1 style="font-family: 'Courier New', Courier, monospace; text-transform: uppercase;">Deathly?</h1>
+      <h1>Compared to other death causes, how common is terrorism?</h1>
+      <div id="cause_of_death_div" style="width: 70vw;"></div>
+      <h1> As we can see from the chart, curing for example Malaria would save more lives then ending terrorism </h1>
+    </div>
+  </section>
+
+  <section class="worldmap-section">
+    <div class=" d-flex flex-column align-items-center">
+      <h2> And just like malaria, terrorism is more common some places then others, so lets look at the map </h2>
+      <div id="worldmap-div" style="width: 90vw;"></div>
+    </div>
+  </section>
+
+  <section class="attacks-section">
+    <div class="container d-flex flex-column align-items-center">
+      <h1 style="font-family: 'Courier New', Courier, monospace; text-transform: uppercase;">Top 10 countries attacked
+      </h1>
+      <div id="attacks-10yr-div" style="width: 90vw;"></div>
+    </div>
+  </section>
+
+  <section class="sankey-section">
+    <div class=" d-flex flex-column align-items-center">
+      <h1>Sankey</h1>
+      <div id="sankey-diagram"></div>
+    </div>
+  </section>
+
   <!-- Footer-->
   <footer class="footer bg-black small text-center text-white-50">
     <div class="container px-4 px-lg-5">
-      Copyright &copy; Your Website 2023
+      Copyright &copy; Your Website
     </div>
   </footer>
   <!-- Bootstrap core JS-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"|></script>
-      <!-- Core theme JS-->
-      <script src="js/scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" |></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
   <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
   <!-- * *                               SB Forms JS                               * *-->
   <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
   <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  <!-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
+  <script src="js/d3.js" charset="utf-8"></script>
+  <script src="js/d3_deaths.js" charset="utf-8"></script>
+  <script src="js/worldmap.js" charset="utf-8"></script>
+  <script src="js/d3_attacks_10y.js" charset="utf-8"></script>
+  <script src="js/sankey.js" charset="utf-8"></script>
+
 </body>
+
 </html>
