@@ -1,0 +1,17 @@
+country_txt,iyear,gname,count
+Afghanistan,2020,Taliban,1886
+Afghanistan,2020,Unknown,658
+India,2020,Unknown,186
+Iraq,2020,Unknown,361
+Nigeria,2020,Unknown,74
+Pakistan,2020,Unknown,232
+Philippines,2020,Unknown,102
+Somalia,2020,Unknown,46
+Syria,2020,Unknown,97
+Thailand,2020,Unknown,34
+Yemen,2020,Unknown,66
+Somalia,2020,Al-Shabaab,231
+Nigeria,2020,Boko Haram,217
+Iraq,2020,Islamic State of Iraq and the Levant (ISIL),323
+Syria,2020,Islamic State of Iraq and the Levant (ISIL),62
+Yemen,2020,Houthi extremists (Ansar Allah),341

@@ -1,57 +1,62 @@
-
-//casualties by year 
+// Casualties by year
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 20, left: 60},
-    width = 960 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+var containerDivCasualties = d3.select("#casualties-per-year-div");
 
-// append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
+var marginCasualties = { top: 10, right: 30, bottom: 20, left: 60 };
+var aspectRatioCasualties = 2 / 4; // You can adjust this ratio based on your preference
+
+// Get the width and height of the container
+
+// Calculate width and height based on the container size
+var widthCasualties = containerDivCasualties.node().getBoundingClientRect().width - marginCasualties.left - marginCasualties.right;
+var heightCasualties = widthCasualties * aspectRatioCasualties;
+
+// Append the SVG object to the body of the page
+var svgCasualties = containerDivCasualties
   .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+  .attr("width", containerDivCasualties.node().getBoundingClientRect().width)
+  .attr("height", heightCasualties + marginCasualties.top + marginCasualties.bottom)
   .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+  .attr("transform", "translate(" + marginCasualties.left + "," + marginCasualties.top + ")");
 
-//Read the data
-d3.csv("assets/csv/number_terrorist_attacks_casualties_per_year.csv",
-
-  // When reading the csv, I must format variables:
-  function(d){
-    return { date : d3.timeParse("%Y")(d.year), value : d.casualities }
-  },
-
-  // Now I can use this dataset:
-  function(data) {
+// Read the data
+d3.csv("assets/csv/number_terrorist_attacks_casualties_per_year.csv")
+  .then(function (data) {
+    // Format the data
+    data.forEach(function (d) {
+      d.date = d3.timeParse("%Y")(d.year);
+      d.value = +d.casualities;
+    });
 
     // Add X axis --> it is a date format
     var x = d3.scaleTime()
-      .domain(d3.extent(data, function(d) { return d.date; }))
-      .range([ 0, width ]);
-    svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+      .domain(d3.extent(data, function (d) { return d.date; }))
+      .range([0, widthCasualties]);
+    svgCasualties.append("g")
+      .attr("transform", "translate(0," + heightCasualties + ")")
+      .call(d3.axisBottom(x))
+      .style("stroke", "white");
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain([0, d3.max(data, function(d) { return +d.value; })])
-      .range([ height, 0 ]);
-    svg.append("g")
-      .call(d3.axisLeft(y));
+      .domain([0, d3.max(data, function (d) { return d.value; })])
+      .range([heightCasualties, 0]);
+    svgCasualties.append("g")
+      .call(d3.axisLeft(y))
+      .style("stroke", "white");
 
-    // Add the line
-    svg.append("path")
+      svgCasualties.append("path")
       .datum(data)
       .attr("fill", "none")
-      .attr("stroke", "steelblue")
+      .attr("stroke", "grey")
       .attr("stroke-width", 1.5)
       .attr("d", d3.line()
-        .x(function(d) { return x(d.date) })
-        .y(function(d) { return y(d.value) })
-        )
-  
-      var Tooltip = d3.select("#my_dataviz")
+        .defined(d => d.value !== 0) // Exclude the line when the value is zero
+        .x(function (d) { return x(d.date); })
+        .y(function (d) { return y(d.value); })
+      );
+    
+    var TooltipCasualties = d3.select("#casualties-per-year-div")
       .append("div")
       .style("opacity", 0)
       .attr("class", "tooltip")
@@ -60,39 +65,55 @@ d3.csv("assets/csv/number_terrorist_attacks_casualties_per_year.csv",
       .style("border-width", "1px")
       .style("border-radius", "9px")
       .style("padding", "10px")
-      .style("position", "absolute")
-
-      // Three function that change the tooltip when user hover / move / leave a cell
-      var mouseover = function(d) {
-        Tooltip
+      .style("position", "absolute");
+    
+    // Three functions that change the tooltip when the user hovers/moves/leaves a cell
+    var mouseoverCasualties = function (event) {
+      var d = event.target.__data__; // Accessing the data associated with the element
+    
+      if (d && d.value !== 0) {
+        TooltipCasualties
           .style("opacity", 1)
+          .html("Year : " + d.date.getFullYear() + "<br/>" + " Casualties : " + d.value);
+      } else {
+        TooltipCasualties.style("opacity", 0);
       }
-      var mousemove = function(d) {
-        Tooltip
-          .style("left", (d3.mouse(this)[0]+70) + "px")
-          .style("top", (d3.mouse(this)[1]) + "px")
-          .html("Year : "+ d.date.getFullYear() +" Casualties : "+d.value)
+    };
+    
+    var mousemoveCasualties = function (event) {
+      var d = event.target.__data__; // Accessing the data associated with the element
+    
+      if (d && d.value !== 0) {
+        TooltipCasualties
+          .html("Year : " + d.date.getFullYear() + "<br/>" + " Casualties : " + d.value)
+          .style("left", (event.pageX + 10) + "px")  // Set left position relative to mouse X
+          .style("top", (event.pageY - 10) + "px");  // Set top position relative to mouse Y
       }
-      var mouseleave = function(d) {
-        Tooltip
-          .style("opacity", 0)
-      }
-
+    };
+    
+    var mouseleaveCasualties = function () {
+      TooltipCasualties.style("opacity", 0);
+    };
+    
     // Add the points
-    svg
-      .append("g")
-      .selectAll("dot")
+    svgCasualties.selectAll("dot")
       .data(data)
       .enter()
       .append("circle")
-        .attr("class", "myCircle")
-        .attr("cx", function(d) { return x(d.date) } )
-        .attr("cy", function(d) { return y(d.value) } )
-        .attr("r", 2.5)
-        .attr("stroke", "#69b3a2")
-        .attr("stroke-width", 2)
-        .attr("fill", "white")
-        .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
-        .on("mouseleave", mouseleave)
-})
+      .attr("class", "myCircle")
+      .attr("cx", function (d) { return x(d.date); })
+      .attr("cy", function (d) { return y(d.value); })
+      .attr("r", 2.5)
+      .attr("stroke", "#69b3a2")
+      .attr("stroke-width", 2)
+      .attr("fill", "white")
+      .on("mouseover", mouseoverCasualties)
+      .on("mousemove", mousemoveCasualties)
+      .on("mouseleave", mouseleaveCasualties);
+      })
+  .catch(function (error) {
+    console.error("Error reading the CSV file:", error);
+  });
+
+// 0 on intersection of axis needs to be removed
+// mouseover needs to work and render

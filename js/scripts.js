@@ -27,7 +27,6 @@ $(document).on("scroll", function() {
 });
 
 
-
   
 // Reload handler
   window.onload = function() {
@@ -41,8 +40,12 @@ $(document).on("scroll", function() {
   };
   
   
-// Typewriter in view
-function isElementInViewport(el) {
+  function isElementInViewport(el) {
+    // Check if the element is null or undefined
+    if (!el) {
+      return false;
+    }
+  
     var rect = el.getBoundingClientRect();
     return (
       rect.top >= 0 &&
@@ -52,18 +55,99 @@ function isElementInViewport(el) {
     );
   }
   
-  function handleScroll() {
-    var element = document.querySelector('.line-1');
+ 
   
-    if (isElementInViewport(element)) {
-      element.classList.add('visible');
-      window.removeEventListener('scroll', handleScroll);
-    }
+// Highlight
+document.addEventListener("DOMContentLoaded", function () {
+    const highlightEffect = document.querySelector('.highlight-effect');
+
+    highlightEffect.addEventListener('mouseover', function () {
+        this.querySelector('.text-to-be').classList.add('highlighted');
+
+    });
+
+    highlightEffect.addEventListener('mouseout', function () {
+      this.classList.remove('highlighted');
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const highlightEffect = document.querySelector('.highlight-effect');
+
+    highlightEffect.addEventListener('mouseover', function () {
+    });
+
+    highlightEffect.addEventListener('mouseout', function () {
+      this.querySelector('.highlighted').classList.remove('highlighted');
+    });
+  });
+
+
+
+    // $(function() {
+    //     $('a[href*=#]').on('click', function(e) {
+    //       e.preventDefault();
+    //       $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+    //     });
+    //   });
+
+
+
+// Used in:
+// typewriter
+document.addEventListener("DOMContentLoaded", function () {
+  var observer = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        // Your D3.js code for the typewriter animation
+        var text = d3.select(".anim-typewriter");
+
+        text.transition()
+          .duration(4000) // Adjust the duration based on your preference
+          .tween("text", function () {
+            var content = "First we need to understand what we mean by terrorism";
+            var i = d3.interpolateString("", content);
+
+            return function (t) {
+              text.text(i(t));
+            };
+          });
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  var typewriterElement = document.querySelector(".anim-typewriter");
+  observer.observe(typewriterElement);
+});
+
+
+// timeline
+document.addEventListener("DOMContentLoaded", function() {
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.5, // Adjust as needed
+  };
+
+  const observer = new IntersectionObserver(handleIntersect, observerOptions);
+
+  document.querySelectorAll('.timeline li').forEach(function(item) {
+    observer.observe(item);
+  });
+
+  function handleIntersect(entries, observer) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        entry.target.classList.remove('fade-out');
+      } else {
+        entry.target.classList.add('fade-out');
+        entry.target.classList.remove('fade-in');
+      }
+    });
   }
-  
-  window.addEventListener('scroll', handleScroll);
-  
-  handleScroll(); // Initial check on page load
-  
-  
-  
+});
+
+
