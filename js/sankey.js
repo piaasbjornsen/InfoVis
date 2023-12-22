@@ -33,7 +33,8 @@ var link = svg.append("g")
     .enter()
     .append("path")
     .attr("class", "sankey-link")
-    // ... other attributes ...
+    .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+    .sort(function(a, b) { return b.dy - a.dy; })
     .on("mouseover", function(event, d) { 
         tooltipSankey.transition()
             .duration(200)
